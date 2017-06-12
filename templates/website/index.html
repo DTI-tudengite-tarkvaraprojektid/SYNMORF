@@ -30,7 +30,7 @@
 					<tr>
 						<th>#</th>
 						<th>Lemma</th>
-						<th>Kogus</th>						
+						<th>Kogus</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -40,7 +40,7 @@
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
 					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
 					{% for lemma in lemmas %}
-						<tr class='clickable-row' data-href='https://www.youtube.com/watch?v=WPni755-Krg&t=8557s'>
+						<tr>
 							<td>{{ forloop.counter }}</td>
 							<td>{{ lemma.0 }}</td>
 							<td>{{ lemma.1 }}</td>

@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load filter_tags %}
 <html>
 	<head>
 		<title>SYNMORF</title>
@@ -30,8 +31,11 @@
 <!-- Puhastab peale formi saatmist POST välja tühjaks, et ei tekiks topelt formi saatmist. -->
 <script>
 	$('#myTable').DataTable();
-	
 	$(document).ready(function(){$('#myTable2').DataTable();});
+    $(document).ready(function(){$('#myTable3').DataTable({
+        'ordering':false,
+        'columns.orderable': false
+    });});
 
     var form = document.getElementsByTagName("form");
     form.onsubmit = function () {
