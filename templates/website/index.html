@@ -1,5 +1,6 @@
 {% extends 'website/base.html' %}
 {% load staticfiles %}
+<!DOCTYPE html>
 
 <!-- Tegemist on puhta html koodiga, mis Django raamistiku töttu lubab {} sees kasutada Pythoni koodi 'template tag' kasutades.
 <!-- Loogsulud protsentidega tähistab et tegemist on Pythoni keele võtmesõnaga. -->
@@ -18,7 +19,7 @@
 		{{ form.as_p }} 
 		<button type="submit" class="save btn btn-default">Saada</button>
 	</form>
-	<div>
+	</div>
 	
 	<!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
 	{% if lemmas %}
@@ -40,7 +41,7 @@
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
 					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
 					{% for lemma in lemmas %}
-						<tr class='clickable-row' data-href='https://www.youtube.com/watch?v=WPni755-Krg&t=8557s'>
+						<tr  class='clickable-row'  data-href='post_list.html' >
 							<td>{{ forloop.counter }}</td>
 							<td>{{ lemma.0 }}</td>
 							<td>{{ lemma.1 }}</td>

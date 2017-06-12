@@ -39,3 +39,8 @@ def get_letter_sequence(iterable, n_gram):
 		for i in range(len(sona) - n_gram + 1):
 			temp.append(sona[i:i + n_gram])
 	return Counter(temp).most_common(100)
+
+def get_base_words(lemma):
+	df = filtered_dataframe[filtered_dataframe.lemmas == lemma]
+	df = list(df.word_texts)
+	return anti_lemma

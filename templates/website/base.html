@@ -1,4 +1,6 @@
 {% load staticfiles %}
+<!DOCTYPE html>
+
 <html>
 	<head>
 		<title>SYNMORF</title>
@@ -29,7 +31,8 @@
 
 <!-- Puhastab peale formi saatmist POST välja tühjaks, et ei tekiks topelt formi saatmist. -->
 <script>
-	$('#myTable').DataTable();
+	tabel=$('#myTable').DataTable();
+	tabel.page.len( -1 ).draw();
 	
 	$(document).ready(function(){$('#myTable2').DataTable();});
 
@@ -38,8 +41,9 @@
         form.reset();
     }
 jQuery(document).ready(function($) {
+	
     $(".clickable-row").click(function() {
-        window.location = $(this).data("href");
+        window.open ( $(this).data("href"));
     });
 });
 </script>
