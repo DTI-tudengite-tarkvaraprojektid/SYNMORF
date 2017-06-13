@@ -2,6 +2,11 @@
 {% load staticfiles %}
 {% load filter_tags %}
 
+<!DOCTYPE html>
+
+{% load filter_tags %}
+
+
 <!-- Tegemist on puhta html koodiga, mis Django raamistiku töttu lubab {} sees kasutada Pythoni koodi 'template tag' kasutades.
 <!-- Loogsulud protsentidega tähistab et tegemist on Pythoni keele võtmesõnaga. -->
 <!-- Topeltloogsulud. tähistab Pythoni muutujat, mida me t012loputoo/website/views.py muudame selles failis arusaadavaks.
@@ -13,44 +18,45 @@
 <!-- form.as_p trükib formi input elemendid paragraafidena välja -->
 <!-- csrf_token kaitseb väliste rünnakute eest, Django ei luba forme kasutada ilma nendeta, turvameetmete tõttu. -->
 {% block content %}
-    <div>
-    <h1>Sisestage algtekst</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Saada</button>
-    </form>
-    <div>
 
-    <!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
-    {% if lemmas %}
-
-        <h1>Enimkasutatud lemmad</h1>
-        <div class="table-container">
-            <table class="table table-striped" id="myTable">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Lemma</th>
-                    <th>Kogus</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                <!-- Võtab sisse lemmade listi ja kirjutab välja iga for tsükkliga tabeli rea. -->
-                <!-- Kuna lemma on list, siis selle elementide indekseerimine käib punkti abil. vt rida 30/31. -->
-                <!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
-                <!-- Muutuja lemma on kujul ['lemma', esinemissagedus] -->
-                {% for lemma in lemmas %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td>{{ lemma.0 }}</td>
-                        <td>{{ lemma.1 }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-
+	<div>
+	<h1>Sisestage algtekst</h1>
+	<form method="POST" class="post-form">{% csrf_token %} 
+		{{ form.as_p }} 
+		<button type="submit" class="save btn btn-default">Saada</button>
+	</form>
+	</div>
+	
+	<!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
+	{% if lemmas %}
+		
+		<h1>Enimkasutatud lemmad</h1>
+		<div class="table-container">
+			<table class="table table-striped" id="myTable">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Lemma</th>
+						<th>Kogus</th>						
+					</tr>
+				</thead>
+				<tbody>
+				
+					<!-- Võtab sisse lemmade listi ja kirjutab välja iga for tsükkliga tabeli rea. -->
+					<!-- Kuna lemma on list, siis selle elementide indekseerimine käib punkti abil. vt rida 30/31. -->
+					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
+					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
+					{% for lemma in lemmas %}
+						<tr  class='clickable-row'  data-href='post_list.html' >
+							<td>{{ forloop.counter }}</td>
+							<td>{{ lemma.0 }}</td>
+							<td>{{ lemma.1 }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+ 
         <h1>Enimesinevad tähejäriendid</h1>
         <div class="table-container">
             <table class="table table-striped" id="myTable2">

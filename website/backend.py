@@ -54,6 +54,13 @@ def get_letter_sequence(dataframe, n_gram):
 	return Counter(temp).most_common()
 
 
+# # argument on dataframe'i kujul
+# def get_base_words(lemma):
+# 	df = filtered_dataframe[filtered_dataframe.lemmas == lemma]
+# 	df = list(df.word_texts)
+# 	return anti_lemma
+
+
 def get_adjandency_matrix(text, ngramms):
 	# Filtreerib välja arvud, lausemärgid ja nimed ja tagastab unikaalsed lemmad. [[lemma], [lemma], [lemma]]
 	lemma_list = list(get_filtered_content(text).lemmas.unique())
@@ -63,10 +70,10 @@ def get_adjandency_matrix(text, ngramms):
 	# Sõnad on eraldi listides, kuna muidu loetakse ühe sõna lõppu ja teise sõna algust kui külgnevaks tulevas maatriksis.
 	ngram_lemmas = find_ngrams(lemma_list, ngramms)
 	pure_ngram = [item for sublist in ngram_lemmas for item in sublist]
-	c = Counter(pure_ngram).most_common(100)
+	c = Counter(pure_ngram).most_common()
 
 	# Võtab kokku kõik tähejäriendid ühte listi, muudab set's et eraldada duplikaadid ning listiks jälle tagasi.
-	flatten = list(set([item for sublist in ngram_lemmas for item in sublist]))
+	flatten = [count[0] for count in c]
 	flat_len = len(flatten)
 
 	# Loob kahedimensionaalse massiivi kuhu andmeid panna.
@@ -82,9 +89,11 @@ def get_adjandency_matrix(text, ngramms):
 			# If lause on selleks, et mitte lugeda ainult n-grammi külgnevusi kuid ka reaalsete tähte külgnevusi mingis sõnas.
 			# If lause ise on selleks et list indeksist välja ei läheks, hüppab pidevalt üle ühe.
 			# two_dimensional_array[index_x][index_y] += 1
+
 			if i < len(word) - ngramms: two_dimensional_array[index_x][flatten.index(word[i + ngramms])] += 1
 
 	# Muutab andmed loetavaks kuujuks.
 	value_matrix = pd.DataFrame(two_dimensional_array, index=flatten, columns=flatten).values.tolist()
 
 	return value_matrix, flatten
+
