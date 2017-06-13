@@ -36,6 +36,9 @@
 <!-- Puhastab peale formi saatmist POST välja tühjaks, et ei tekiks topelt formi saatmist. -->
 <script>
 // #cancer
+
+
+
 	tabel=$('#myTable').DataTable();
 	tabel.page.len( -1 ).draw();
 	
@@ -54,8 +57,11 @@
     }
 jQuery(document).ready(function($) {
 	
-    $(".clickable-row").click(function() {
-        window.open ( $(this).data("href"));
+    $(".clickable-row").each(function(){
+		$(this).click(function(){
+			window.open ( $(this).data("href"));
+			$(this).css('background-color', 'pink');
+		})
+	})
     });
-});
 </script>
