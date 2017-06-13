@@ -45,7 +45,7 @@ h1, h2, h3, h4 {
     color: #000000;
 }
 
-.table-container {
+.overview {
     display: block;
     height: 514px;
     width: 100%;
@@ -54,7 +54,3 @@ h1, h2, h3, h4 {
     table-layout: fixed; !important;
 }
 
-.clickable-row:hover {
-    color: #0000FF;
-	background-color: #C0C0C0 !important;
-}
