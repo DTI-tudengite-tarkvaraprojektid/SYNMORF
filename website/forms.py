@@ -6,4 +6,4 @@ class InputForm(forms.ModelForm):
 
 	class Meta:
 		model = Content
-		fields = ("Tekst", "n_gram")
+		fields = ("text", "n_gram", "title")
