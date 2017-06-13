@@ -1,5 +1,9 @@
 {% load staticfiles %}
+
 <!DOCTYPE html>
+
+
+{% load filter_tags %}
 
 <html>
 	<head>
@@ -31,10 +35,18 @@
 
 <!-- Puhastab peale formi saatmist POST välja tühjaks, et ei tekiks topelt formi saatmist. -->
 <script>
+// #cancer
 	tabel=$('#myTable').DataTable();
 	tabel.page.len( -1 ).draw();
 	
+
+	$('#myTable').DataTable();
+
 	$(document).ready(function(){$('#myTable2').DataTable();});
+    $(document).ready(function(){$('#myTable3').DataTable({
+        'ordering':false,
+        'columns.orderable': false
+    });});
 
     var form = document.getElementsByTagName("form");
     form.onsubmit = function () {
