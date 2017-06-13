@@ -20,7 +20,7 @@ def index(request):
 	# get_letter_sequence võtab sisse lemmade listi ja n-grami suuruse ja tagastab need kujul [['tähejäriendid', kogus], ['tähejäriendid', kogus]].
 	else:
 
-		text = request.POST.get("Tekst")
+		text = request.POST.get("text")
 		ngrams = int(request.POST.get('n_gram'))
 
 		df = get_filtered_content(text)
