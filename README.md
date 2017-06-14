@@ -6,3 +6,4 @@ TLU suvepraktika - tarkvara lingvistiliseks analüüsiks.
 * Joosep Hint
 * Martin Kasak
 * Artur Tylp
+ss

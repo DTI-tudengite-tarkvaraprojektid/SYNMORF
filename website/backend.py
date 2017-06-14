@@ -36,6 +36,7 @@ def wordform_chart(dataframe):
 	df1 = dataframe.groupby('descriptions').size().reset_index(name='counts').sort_values("counts", ascending=False).head(5)
 
 
+
 # [[lemma], [lemma], [lemma]]
 def find_ngrams(input_list, n):
 	temp = []
@@ -51,9 +52,9 @@ def get_letter_sequence(dataframe, n_gram):
 	for sona in iterable:
 		for i in range(len(sona) - n_gram + 1):
 			temp.append(sona[i:i + n_gram])
-	return Counter(temp).most_common()
+	return Counter(temp).most_common(100)
 
-
+	
 # # argument on dataframe'i kujul
 # def get_base_words(lemma):
 # 	df = filtered_dataframe[filtered_dataframe.lemmas == lemma]
@@ -69,6 +70,7 @@ def get_adjandency_matrix(text, ngramms):
 	# meie maa elu -> mina maa elu -> [['mi', 'in', 'na'], ['ma', 'aa'], ['el', 'lu']]
 	# Sõnad on eraldi listides, kuna muidu loetakse ühe sõna lõppu ja teise sõna algust kui külgnevaks tulevas maatriksis.
 	ngram_lemmas = find_ngrams(lemma_list, ngramms)
+
 	pure_ngram = [item for sublist in ngram_lemmas for item in sublist]
 	c = Counter(pure_ngram).most_common()
 
@@ -86,11 +88,11 @@ def get_adjandency_matrix(text, ngramms):
 		for i in range(len(word) - 1):
 			index_x = flatten.index(word[i])
 
+
 			# N-grammi külgnevuse eemaldamiseks võtta välja rida 82.
 			# If lause on selleks, et mitte lugeda ainult n-grammi külgnevusi kuid ka reaalsete tähte külgnevusi mingis sõnas.
 			# If lause ise on selleks et list indeksist välja ei läheks, hüppab pidevalt üle ühe.
-			# two_dimensional_array[index_x][index_y] += 1
-
+	
 			if i < len(word) - ngramms: two_dimensional_array[index_x][flatten.index(word[i + ngramms])] += 1
 
 	# Muutab andmed loetavaks kuujuks.

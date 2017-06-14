@@ -4,7 +4,8 @@ from .forms import InputForm
 
 
 def post_list(request):
-	return render(request, 'website/post_list.html', {})
+    return render(request, 'website/post_list.html', {})
+
 
 
 def index(request):
@@ -28,7 +29,6 @@ def index(request):
 		letter_sequence = get_letter_sequence(df.lemmas, ngrams)
 		adjacency_matrix, headers = get_adjandency_matrix(text, ngrams)
 
+
 		form = InputForm()
-		return render(request, "website/index.html",
-		              {'form': form, 'lemmas': counted_lemmas, 'letters': letter_sequence, 'matrix': adjacency_matrix,
-		               'header': headers})
+		return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters':letter_sequence, 'matrix': adjacency_matrix, 'header': headers})
