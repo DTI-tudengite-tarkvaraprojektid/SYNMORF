@@ -1,17 +1,7 @@
 {% load staticfiles %}
-<<<<<<< HEAD
-
-<!DOCTYPE html>
-
-
-{% load filter_tags %}
-
-=======
 {% load filter_tags %}
 
 <!DOCTYPE html>
-
->>>>>>> 2fc00f767cecb808a23904e47e76f3ebdab3771b
 <html>
 	<head>
 		<title>SYNMORF</title>
@@ -47,27 +37,16 @@
 	tabel.page.len( 10 ).draw();
 	
 
-	$('#myTable').DataTable();
+	
 
 	$(document).ready(function(){$('#myTable2').DataTable();});
     $(document).ready(function(){$('#myTable3').DataTable({
         'ordering':false,
         'columns.orderable': false
+	});});
 
 
 
-// #cancer
-
-
-
-	tabel=$('#myTable').DataTable();
-	tabel.page.len( -1 ).draw();
-
-	$(document).ready(function(){$('#myTable2').DataTable();});
-    $(document).ready(function(){$('#myTable3').DataTable({
-
-
-    });});
 
     var form = document.getElementsByTagName("form");
     form.onsubmit = function () {
@@ -81,8 +60,8 @@ jQuery(document).ready(function($) {
 		$(this).click(function(){
 			window.open ( $(this).data("href"));
 			$(this).css('background-color', 'pink');
-		})
-	})
+		});
+	});
     });
 </script>
 
