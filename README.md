@@ -1,3 +1,8 @@
-# Suvepraktika-2017-
+# Suvepraktika-2017
 TLU suvepraktika - tarkvara lingvistiliseks analüüsiks.
-Martin Kasak
+* Marko Kollo
+* Mart Ambur Jr
+* Ingo Mägi
+* Joosep Hint
+* Martin Kasak
+* Artur Tylp
