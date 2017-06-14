@@ -54,6 +54,15 @@ h1, h2, h3, h4 {
     table-layout: fixed; !important;
 }
 
+.matrix-container {
+    display: block;
+    height: 514px;
+    width: 600px !important;
+    overflow-y: scroll;
+	overflow-x: scroll !important;
+    table-layout: fixed; !important;
+}
+
 .clickable-row:hover {
     color: #0000FF;
 	background-color: #C0C0C0 !important;

@@ -31,7 +31,7 @@
 		
 		<h1>Enimkasutatud lemmad</h1>
 		<div class="table-container">
-			<table class="table table-striped" id="myTable">
+			<table class="table table-striped" id="myTable ">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -46,7 +46,7 @@
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
 					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
 					{% for lemma in lemmas %}
-						<tr  class='clickable-row'  data-href='post_list.html' >
+						<tr  class='clickable-row'  data-href='post_list.html?lemma={{ lemma.0 }}' >
 							<td>{{ forloop.counter }}</td>
 							<td>{{ lemma.0 }}</td>
 							<td>{{ lemma.1 }}</td>
@@ -70,7 +70,7 @@
                 <!-- Forloop counter loeb üle mitu korda for loop on oma tsükklit teinud -->
                 <!-- Lisatud selle jaoks, et näha kui mitmendal kohal sageduse poolest see esineb.-->
                 {% for letter in letters %}
-                    <tr>
+                    <tr class='clickable-row'>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ letter.0 }}</td>
                         <td>{{ letter.1 }}</td>
@@ -80,7 +80,7 @@
             </table>
         </div>
 
-        <div class="table-container">
+        <div class="matrix-container">
             <h1>Külgnevusmaatriks</h1>
             <table class="table table-striped" id="myTable3">
                 <thead>
@@ -94,7 +94,7 @@
                 <tbody>
 
                 {% for sequence in matrix %}
-                    <tr>
+                    <tr class='clickable-row'>
                         <td>{{ header|get_at_index:forloop.counter0}}</td>
                         {% for data in sequence %}
                             <td>{{ data }}</td>
