@@ -44,15 +44,14 @@ class Content(models.Model):
 	user = models.ForeignKey("auth.User")
 	text = models.TextField(default="")
 	n_gram = models.PositiveIntegerField(validators=[MinValueValidator(1)], default=1)
-	title = models.CharField(max_length=50, default="tekst")
+	title = models.CharField(max_length=50, default="")
 	types = models.CharField(max_length=100, choices=MY_CHOICES, default='Ilukirjandus')
 	created = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
 		return self.user + "_" + self.created
-<<<<<<< HEAD
-=======
+
 
 	# Ilukirjandus, Esseistika, Epistolaarne kirjandus, Memuaristika, Kroonikakirjandus, Teaduskirjandus, Populaarteaduslik, Faktikirjandus
 	# Teabekirjandus, Õppekirjandus, Teatmekirjandus, Tarbekirjandus, Kommertsteksti, Poliitiline kirjandus, Vaimulik kirjandus, Epitaafid, Muusika literatuur
->>>>>>> 2fc00f767cecb808a23904e47e76f3ebdab3771b
+
