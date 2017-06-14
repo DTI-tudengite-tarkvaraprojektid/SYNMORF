@@ -74,6 +74,7 @@ def get_adjandency_matrix(text, ngramms):
 
 	# Võtab kokku kõik tähejäriendid ühte listi, muudab set's et eraldada duplikaadid ning listiks jälle tagasi.
 	flatten = [count[0] for count in c]
+	flatten = flatten
 	flat_len = len(flatten)
 
 	# Loob kahedimensionaalse massiivi kuhu andmeid panna.

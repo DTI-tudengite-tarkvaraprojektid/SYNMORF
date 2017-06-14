@@ -44,7 +44,7 @@ class Content(models.Model):
 	user = models.ForeignKey("auth.User")
 	text = models.TextField(default="")
 	n_gram = models.PositiveIntegerField(validators=[MinValueValidator(1)], default=1)
-	title = models.CharField(max_length=50, default="tekst")
+	title = models.CharField(max_length=50, default="")
 	types = models.CharField(max_length=100, choices=MY_CHOICES, default='Ilukirjandus')
 	created = models.DateTimeField(default=timezone.now)
 
