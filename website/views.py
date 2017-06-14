@@ -2,7 +2,9 @@ from django.shortcuts import render
 from .backend import *
 from .forms import InputForm
 
-
+def post_list(request):
+    return render(request, 'website/post_list.html', {})
+	
 def index(request):
 	
 
@@ -17,8 +19,15 @@ def index(request):
 	# counted_lemmas kujul [['lemma', kogus], ['lemma', kogus], ['lemma', kogus], ['lemma', kogus]]
 	# get_letter_sequence võtab sisse lemmade listi ja n-grami suuruse ja tagastab need kujul [['tähejäriendid', kogus], ['tähejäriendid', kogus]].
 	else:
-		df = get_filtered_content(request.POST.get("Tekst")))
-		counted_lemmas = count_lemmas(df["lemmas"].tolist())
-		letter_sequence = get_letter_sequence(list(df.lemmas), int(request.POST.get('n_gram')))
+
+		text = request.POST.get("Tekst")
+		ngrams = int(request.POST.get('n_gram'))
+
+		df = get_filtered_content(text)
+		counted_lemmas = count_lemmas(df["lemmas"])
+		letter_sequence = get_letter_sequence(df.lemmas, ngrams)
+		adjacency_matrix, headers = get_adjandency_matrix(text, ngrams)
+
+
 		form = InputForm()
-		return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters':letter_sequence})
+		return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters':letter_sequence, 'matrix': adjacency_matrix, 'header': headers})
