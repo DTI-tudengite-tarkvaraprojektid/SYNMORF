@@ -2,14 +2,10 @@
 {% load staticfiles %}
 {% load filter_tags %}
 
-<!DOCTYPE html>
-
-{% load filter_tags %}
 
 
-<!DOCTYPE html>
 
-{% load filter_tags %}
+
 
 
 <!-- Tegemist on puhta html koodiga, mis Django raamistiku töttu lubab {} sees kasutada Pythoni koodi 'template tag' kasutades.
@@ -31,26 +27,23 @@
 		<button type="submit" class="save btn btn-default">Saada</button>
 	</form>
 	</div>
-<<<<<<< HEAD
+
 	<div>
 	<p class="clear"> </p>
 	</div>
-=======
+
 	
->>>>>>> 2fc00f767cecb808a23904e47e76f3ebdab3771b
+
 	<!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
 	{% if lemmas %}
 		
 		
 		<div class="table-container-right">
 		<h1>Enimkasutatud lemmad</h1>
-<<<<<<< HEAD
-		<div class="table-container">
-			<table class="table table-striped" id="myTable ">
-=======
+
 		<div class="scroll">
 			<table class="table table-striped" id="myTable">
->>>>>>> 720db21057fdccab78017a1cd75fbe4f173d1bb3
+
 				<thead>
 					<tr>
 						<th>#</th>
@@ -81,10 +74,7 @@
         <div class="table-container-left">
 		<h1>Enimesinevad tähejäriendid</h1>
 		<div class="scroll">
-=======
-        <h1>Enimesinevad tähejäriendid</h1>
-        <div class="table-container">
->>>>>>> 2fc00f767cecb808a23904e47e76f3ebdab3771b
+
             <table class="table table-striped" id="myTable2">
                 <thead>
                 <tr>
@@ -93,29 +83,18 @@
                     <th>Kogus</th>
                 </tr>
                 </thead>
-<<<<<<< HEAD
-				
-=======
->>>>>>> 2fc00f767cecb808a23904e47e76f3ebdab3771b
                 <tbody>
                 <!-- Forloop counter loeb üle mitu korda for loop on oma tsükklit teinud -->
                 <!-- Lisatud selle jaoks, et näha kui mitmendal kohal sageduse poolest see esineb.-->
                 {% for letter in letters %}
-<<<<<<< HEAD
-                    <tr class='clickable-row'>
-=======
-<<<<<<< HEAD
+
                     
 					<tr class='clickable-row'>
-=======
-                    <tr>
->>>>>>> 2fc00f767cecb808a23904e47e76f3ebdab3771b
->>>>>>> 720db21057fdccab78017a1cd75fbe4f173d1bb3
                         <td>{{ forloop.counter }}</td>
                         <td>{{ letter.0 }}</td>
                         <td>{{ letter.1 }}</td>
                     </tr>
-<<<<<<< HEAD
+
 					
                 {% endfor %}
                 </tbody>
@@ -129,16 +108,6 @@
 	<h1 style="margin-top: 100px;">Külgnevusmaatriks</h1>
         <div class="matrix-container">
             
-			
-=======
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-
-        <div class="matrix-container">
-            <h1>Külgnevusmaatriks</h1>
->>>>>>> 2fc00f767cecb808a23904e47e76f3ebdab3771b
             <table class="table table-striped" id="myTable3">
                 <thead>
                 <tr>
@@ -164,12 +133,8 @@
         </div>
 
         <!-- line chart canvas element -->
-<<<<<<< HEAD
         <canvas id="buyers" width="600" height="400" style=" display: block; margin: auto"></canvas><br>
-=======
-        <canvas id="buyers" width="600" height="400"></canvas>
->>>>>>> 2fc00f767cecb808a23904e47e76f3ebdab3771b
-        <!-- pie chart canvas element -->
+		<!-- pie chart canvas element -->
         <canvas id="countries" width="600" height="400" style="display: block;margin: auto"></canvas><br>
         <!-- bar chart canvas element -->
         <canvas id="income" width="600" height="400" style="display: block;margin: auto"></canvas><br>
@@ -243,9 +208,7 @@
         </script>
 
     {% endif %}
-<<<<<<< HEAD
+
 {% endblock %}
 
-=======
-{% endblock %}
->>>>>>> 2fc00f767cecb808a23904e47e76f3ebdab3771b
+
