@@ -1,8 +1,17 @@
 {% load staticfiles %}
+<<<<<<< HEAD
+
+<!DOCTYPE html>
+
+
+{% load filter_tags %}
+
+=======
 {% load filter_tags %}
 
 <!DOCTYPE html>
 
+>>>>>>> 2fc00f767cecb808a23904e47e76f3ebdab3771b
 <html>
 	<head>
 		<title>SYNMORF</title>
@@ -26,7 +35,7 @@
 		</div>
 		<div class="content container">
 			<div class="row">
-				<div class="col-md-8">
+				<div class="container-fluid">
 					{% block content %}
 
 					{% endblock %}
@@ -37,6 +46,20 @@
 </html>
 
 <script>
+<<<<<<< HEAD
+// #cancer
+	tabel=$('#myTable').DataTable();
+	tabel.page.len( -1 ).draw();
+	tabel.page.len( 10 ).draw();
+	
+
+	$('#myTable').DataTable();
+
+	$(document).ready(function(){$('#myTable2').DataTable();});
+    $(document).ready(function(){$('#myTable3').DataTable({
+        'ordering':false,
+        'columns.orderable': false
+=======
 
 
 // #cancer
@@ -49,6 +72,7 @@
 	$(document).ready(function(){$('#myTable2').DataTable();});
     $(document).ready(function(){$('#myTable3').DataTable({
 
+>>>>>>> 2fc00f767cecb808a23904e47e76f3ebdab3771b
     });});
 
     var form = document.getElementsByTagName("form");
@@ -58,6 +82,7 @@
 
 
 jQuery(document).ready(function($) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	
     $(".clickable-row").each(function(){
@@ -71,10 +96,16 @@ jQuery(document).ready(function($) {
 
 	
 =======
+=======
+	
+>>>>>>> 720db21057fdccab78017a1cd75fbe4f173d1bb3
     $(".clickable-row").click(function() {
+<<<<<<< HEAD
+=======
         window.location = $(this).data("href");
 
     $(".clickable-row").click(function() {
+>>>>>>> 2fc00f767cecb808a23904e47e76f3ebdab3771b
         window.open ( $(this).data("href"));
     });
 })})

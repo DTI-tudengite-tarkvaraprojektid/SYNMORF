@@ -50,6 +50,9 @@ class Content(models.Model):
 
 	def __str__(self):
 		return self.user + "_" + self.created
+<<<<<<< HEAD
+=======
 
 	# Ilukirjandus, Esseistika, Epistolaarne kirjandus, Memuaristika, Kroonikakirjandus, Teaduskirjandus, Populaarteaduslik, Faktikirjandus
 	# Teabekirjandus, Õppekirjandus, Teatmekirjandus, Tarbekirjandus, Kommertsteksti, Poliitiline kirjandus, Vaimulik kirjandus, Epitaafid, Muusika literatuur
+>>>>>>> 2fc00f767cecb808a23904e47e76f3ebdab3771b
