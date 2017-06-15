@@ -8,7 +8,7 @@ from django.utils import timezone
 class Content(models.Model):
 	user = models.ForeignKey("auth.User")
 	Tekst = models.TextField(default="")
-	n_gram = models.IntegerField()
+	#n_gram = models.IntegerField()
 	created = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):

@@ -17,9 +17,19 @@ def index(request):
 	# counted_lemmas kujul [['lemma', kogus], ['lemma', kogus], ['lemma', kogus], ['lemma', kogus]]
 	# get_letter_sequence võtab sisse lemmade listi ja n-grami suuruse ja tagastab need kujul [['tähejäriendid', kogus], ['tähejäriendid', kogus]].
 	else:
+		form = InputForm()
+
 		df = get_filtered_content(request.POST.get("Tekst"))
-		counted_lemmas = count_lemmas(df["lemmas"].tolist())
-		letter_sequence = get_letter_sequence(list(df.lemmas), int(request.POST.get('n_gram')))
+		lists_of_words = list_of_words(df["word_texts"].tolist())
+		#letter_sequence = get_letter_sequence(list(df.word_tekst), int(request.POST.get('n_gram')))
+		text = massiiv()
+		
+
 
 		form = InputForm()
-		return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters':letter_sequence})
+		return render(request, "website/index.html", {'form': form, 'word_texts': lists_of_words, 'massiiv': text}) #'letters':letter_sequence})
+		
+
+
+		
+		
