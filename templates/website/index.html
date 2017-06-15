@@ -1,5 +1,7 @@
 {% extends 'website/base.html' %}
 {% load staticfiles %}
+{% load filter_tags %}
+
 
 <!-- Tegemist on puhta html koodiga, mis Django raamistiku töttu lubab {} sees kasutada Pythoni koodi 'template tag' kasutades.
 <!-- Loogsulud protsentidega tähistab et tegemist on Pythoni keele võtmesõnaga. -->
@@ -12,25 +14,49 @@
 <!-- form.as_p trükib formi input elemendid paragraafidena välja -->
 <!-- csrf_token kaitseb väliste rünnakute eest, Django ei luba forme kasutada ilma nendeta, turvameetmete tõttu. -->
 {% block content %}
+
 	<div>
 	<h1>Sisestage algtekst</h1>
 	<form method="POST" class="post-form">{% csrf_token %} 
 		{{ form.as_p }} 
+		<!-- Kas laadida Külgnevusmaatriks või mitte.  -->
+		<input type="checkbox" id="checkbox">Lae Külgnevusmaatriksit
+		<br>
 		<button type="submit" class="save btn btn-default">Saada</button>
-	</form>
+		</form>
+	</div>
+
 	<div>
+	<p class="clear"> </p>
+	</div>
+
 	
+
 	<!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
 	{% if word_texts %}
 		
+<<<<<<< HEAD
 		<h1>Enimkasutatud Sonad</h1>
 		<div class="table-container">
+=======
+		
+		<div class="table-container-right">
+		<h1>Enimkasutatud lemmad</h1>
+
+		<div class="scroll">
+>>>>>>> 59e624cf8807579d493f5d10cdda9a93964c97c3
 			<table class="table table-striped" id="myTable">
+
 				<thead>
 					<tr>
 						<th>#</th>
+<<<<<<< HEAD
 						<th>Sonad</th>
 						<th>Kogus</th>
+=======
+						<th>Lemma</th>
+						<th>Kogus</th>						
+>>>>>>> 59e624cf8807579d493f5d10cdda9a93964c97c3
 					</tr>
 				</thead>
 				<tbody>
@@ -39,8 +65,13 @@
 					<!-- Kuna lemma on list, siis selle elementide indekseerimine käib punkti abil. vt rida 30/31. -->
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
 					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
+<<<<<<< HEAD
 					{% for word in word_texts %}
 						<tr>
+=======
+					{% for lemma in lemmas %}
+						<tr  class='clickable-row'  data-href='post_list.html?lemma={{ lemma.0 }}' >
+>>>>>>> 59e624cf8807579d493f5d10cdda9a93964c97c3
 							<td>{{ forloop.counter }}</td>
 							<td>{{ word.0 }}</td>
 							<td>{{ word.1 }}</td>
@@ -49,7 +80,9 @@
 
 				</tbody>
 			</table>
+		</div>	
 		</div>
+<<<<<<< HEAD
 
 		<h1>Graafid</h1>
 		<!--<div class="table-container">
@@ -101,10 +134,98 @@
 
             }
             document.write("{{word.0}}")
+=======
+ 
+        
+        <div class="table-container-left">
+		<h1>Enimesinevad tähejäriendid</h1>
+		<div class="scroll">
+
+            <table class="table table-striped" id="myTable2">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tähejäriend</th>
+                    <th>Kogus</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Forloop counter loeb üle mitu korda for loop on oma tsükklit teinud -->
+                <!-- Lisatud selle jaoks, et näha kui mitmendal kohal sageduse poolest see esineb.-->
+                {% for letter in letters %}
+
+                    
+					<tr class='clickable-row'>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ letter.0 }}</td>
+                        <td>{{ letter.1 }}</td>
+                    </tr>
+
+					
+                {% endfor %}
+                </tbody>
+				
+            </table>
+			</div>
+        </div>
+	<div>
+	<p class="clear"></p>
+	</div>
+	
+	<h1 style="margin-top: 100px;">Külgnevusmaatriks</h1>
+        <div class="matrix-container">
+            
+            <table class="table table-striped" id="myTable3">
+                <thead>
+                <tr>
+                    <th></th>
+                    {% for head in header %}
+                        <th>{{ head }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for sequence in matrix %}
+                    <tr class='clickable-row'>
+                        <td>{{ header|get_at_index:forloop.counter0}}</td>
+                        {% for data in sequence %}
+                            <td>{{ data }}</td>
+                        {% endfor %}
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- line chart canvas element -->
+        <canvas id="buyers" width="600" height="400" style=" display: block; margin: auto"></canvas><br>
+		<!-- pie chart canvas element -->
+        <canvas id="countries" width="600" height="400" style="display: block;margin: auto"></canvas><br>
+        <!-- bar chart canvas element -->
+        <canvas id="income" width="600" height="400" style="display: block;margin: auto"></canvas><br>
+        <script>
+
+            // line chart data
+            var buyerData = {
+                labels: ["January", "February", "March", "April", "May", "June"],
+                datasets: [
+                    {
+                        fillColor: "rgba(172,194,132,0.4)",
+                        strokeColor: "#ACC26D",
+                        pointColor: "#fff",
+                        pointStrokeColor: "#9DB86D",
+                        data: [203, 156, 99, 251, 305, 247]
+                    }
+                ]
+            };
+>>>>>>> 59e624cf8807579d493f5d10cdda9a93964c97c3
             // get line chart canvas
             var sonad = document.getElementById('sonad').getContext('2d');
             
             // draw line chart
+<<<<<<< HEAD
             new Chart(sonad).Bar(sonadData);
             //---------------------//
             {% endfor %}  -->
@@ -151,6 +272,68 @@
             new Chart(sonad2).Bar(sonad2Data);
             //---------------------//
           	
+=======
+            new Chart(buyers).Line(buyerData);
+            // pie chart data
+            var pieData = [
+                {
+                    value: 20,
+                    color: "#878BB6"
+
+                },
+                {
+                    value: 40,
+                    color: "#4ACAB4"
+                },
+                {
+                    value: 10,
+                    color: "#FF8153"
+                },
+                {
+                    value: 30,
+                    color: "#FFEA88"
+                }
+            ];
+            // pie chart options
+            var pieOptions = {
+                segmentShowStroke: false,
+                animateScale: true
+            };
+            // get pie chart canvas
+            var countries = document.getElementById("countries").getContext("2d");
+            // draw pie chart
+            new Chart(countries).Pie(pieData, pieOptions);
+            // bar chart data
+            var barData = {
+                labels: ["January", "February", "March", "April", "May", "June"],
+                datasets: [
+                    {
+                        fillColor: "#48A497",
+                        strokeColor: "#48A4D1",
+                        data: [456, 479, 324, 569, 702, 600]
+                    },
+                    {
+                        fillColor: "rgba(73,188,170,0.4)",
+                        strokeColor: "rgba(72,174,209,0.4)",
+                        data: [364, 504, 605, 400, 345, 320]
+                    }
+                ]
+            };
+            // get bar chart canvas
+            var income = document.getElementById("income").getContext("2d");
+            // draw bar chart
+            new Chart(income).Bar(barData);
+			// checkbox
+			$(document).ready(function () {
+				$('#checkbox').change(function () {
+					if (!this.checked) 
+						$('#myTable3').fadeIn('fast');
+					else 
+						$('#myTable3').fadeOut('fast');
+				});
+			});
+
+>>>>>>> 59e624cf8807579d493f5d10cdda9a93964c97c3
 
         </script>
         
@@ -159,5 +342,10 @@
 
 
     {% endif %}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 59e624cf8807579d493f5d10cdda9a93964c97c3
 {% endblock %}
+
 
