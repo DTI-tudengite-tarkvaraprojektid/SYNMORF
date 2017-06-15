@@ -1,12 +1,13 @@
 from estnltk import Text
 from pprint import pprint
 from collections import Counter
+import numpy as np
 import pandas as pd
 
 
 # Eemaldab sisestatud sõnadest arvud, lausemärgid ja nimed.
 # Tagastab DataFrame, ei eemaldata duplikaate.
-def get_filtered_content(text):
+def make_dataframe(text):
 	dataframe = Text(text).get(["word_texts", "lemmas", "postag_descriptions", "descriptions"]).as_dataframe
 	filtered_dataframe = dataframe[
 		(dataframe.postag_descriptions != "lausemärk") & (dataframe.descriptions != "") & (dataframe.lemmas != "") & (
@@ -16,28 +17,14 @@ def get_filtered_content(text):
 
 
 # Loendab ära lemmade arve, tagastab kujul [("lemma", arv), ("lemma2", arv2), (... , ...)]
-def count_lemmas(dataframe):
-	list_of_lemmas = dataframe.tolist()
-	c = Counter(list_of_lemmas)
-	return c.most_common(100)
+def count_attribute(dataframe, attribute):
+	dataframe = dataframe[attribute]
+	list_of_attributes = dataframe.tolist()
+	c = Counter(list_of_attributes)
+	return c.most_common()
 
 
-# Tagastab laisalt postagide arvu kaks korda.
-# Salvestab samasse kausta piechard'i posttagide arvude kohta.
-# Tight layout hoolitseb selle eest, et sildid mõõda ei läheks.
-# Sort järiestab suuremast-väiksemani, head võtab välja viis esimest tulemust.
-def make_postag_chart(dataframe):
-	df1 = dataframe.groupby('postag_descriptions').size().reset_index(name='counts').sort_values("counts", ascending=False).head(5)
-
-
-# Annab piechart'i sõnavormidest.
-# Salvestab tulemuse static kausta, kust Django saab staatilisi resursse kasutada.
-def wordform_chart(dataframe):
-	df1 = dataframe.groupby('descriptions').size().reset_index(name='counts').sort_values("counts", ascending=False).head(5)
-
-
-
-# [[lemma], [lemma], [lemma]]
+# Input_list peab olema kujul [[lemma], [lemma], [lemma]]
 def find_ngrams(input_list, n):
 	temp = []
 	for word in input_list:
@@ -47,6 +34,7 @@ def find_ngrams(input_list, n):
 
 # Võtab sisse dataframe, muudab listiks, numbri selleks kui suur on tähejäriendid.
 def get_letter_sequence(dataframe, n_gram):
+	dataframe = dataframe.lemmas
 	iterable = list(dataframe.unique())
 	temp = []
 	for sona in iterable:
@@ -54,17 +42,10 @@ def get_letter_sequence(dataframe, n_gram):
 			temp.append(sona[i:i + n_gram])
 	return Counter(temp).most_common(100)
 
-	
-# # argument on dataframe'i kujul
-# def get_base_words(lemma):
-# 	df = filtered_dataframe[filtered_dataframe.lemmas == lemma]
-# 	df = list(df.word_texts)
-# 	return anti_lemma
-
 
 def get_adjandency_matrix(text, ngramms):
 	# Filtreerib välja arvud, lausemärgid ja nimed ja tagastab unikaalsed lemmad. [[lemma], [lemma], [lemma]]
-	lemma_list = list(get_filtered_content(text).lemmas.unique())
+	lemma_list = list(make_dataframe(text).lemmas.unique())
 
 	# Muudab sõnad nende vastavate n-grammiks.
 	# meie maa elu -> mina maa elu -> [['mi', 'in', 'na'], ['ma', 'aa'], ['el', 'lu']]
@@ -76,11 +57,10 @@ def get_adjandency_matrix(text, ngramms):
 
 	# Võtab kokku kõik tähejäriendid ühte listi, muudab set's et eraldada duplikaadid ning listiks jälle tagasi.
 	flatten = [count[0] for count in c]
-	flatten = flatten
 	flat_len = len(flatten)
 
 	# Loob kahedimensionaalse massiivi kuhu andmeid panna.
-	two_dimensional_array = [[0 for i in range(flat_len)] for j in range(flat_len)]
+	two_dimensional_array = np.zeros(shape=(flat_len, flat_len), dtype='uint16')
 
 	for word in ngram_lemmas:
 
@@ -88,12 +68,11 @@ def get_adjandency_matrix(text, ngramms):
 		for i in range(len(word) - 1):
 			index_x = flatten.index(word[i])
 
-
 			# N-grammi külgnevuse eemaldamiseks võtta välja rida 82.
 			# If lause on selleks, et mitte lugeda ainult n-grammi külgnevusi kuid ka reaalsete tähte külgnevusi mingis sõnas.
 			# If lause ise on selleks et list indeksist välja ei läheks, hüppab pidevalt üle ühe.
-	
 			if i < len(word) - ngramms: two_dimensional_array[index_x][flatten.index(word[i + ngramms])] += 1
+
 
 	# Muutab andmed loetavaks kuujuks.
 	value_matrix = pd.DataFrame(two_dimensional_array, index=flatten, columns=flatten).values.tolist()

@@ -75,6 +75,7 @@ h1, h2, h3, h4 {
     overflow-y: scroll;
 	overflow-x: scroll !important;
     table-layout: fixed !important;
+	clear: both !important;
 }
 
 
@@ -83,6 +84,12 @@ h1, h2, h3, h4 {
     background-color: #C0C0C0 !important;
 }
 
+
 input, label {
-    display:block;
+    display:block;  }
+
+
+
+button{
+    float: right;
 }

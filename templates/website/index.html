@@ -83,7 +83,7 @@
                 {% for letter in letters %}
 
                     
-					<tr class='clickable-row'>
+					<tr class='clickable-row' id="{{ letter.0 }}">
                         <td>{{ forloop.counter }}</td>
                         <td>{{ letter.0 }}</td>
                         <td>{{ letter.1 }}</td>
