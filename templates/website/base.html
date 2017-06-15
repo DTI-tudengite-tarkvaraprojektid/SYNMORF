@@ -3,6 +3,7 @@
 
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
     <title>SYNMORF</title>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/fh-3.1.2/r-2.1.1/sc-1.4.2/datatables.min.js"></script>
@@ -20,6 +21,21 @@
     <div class="row">
         <div class="container-fluid">
             {% block content %}
+=======
+	<head>
+		<title>SYNMORF</title>
+		<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/dt-1.10.15/datatables.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.flash.min.js"></script>
+		<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css">
+		<link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/dt-1.10.15/datatables.min.css"/>
+		<link rel="stylesheet" href="{% static '/website/style.css' %}">
+	</head>
+>>>>>>> 59e624cf8807579d493f5d10cdda9a93964c97c3
 
             {% endblock %}
         </div>
@@ -30,6 +46,7 @@
 
 <script>
 
+<<<<<<< HEAD
     var language = {
 	"sProcessing":   "Palun oodake, koostan kuvamiseks nimekirja!",
 	"sLengthMenu":   "N&auml;ita kirjeid _MENU_ kaupa",
@@ -83,6 +100,44 @@
                 $(this).css('background-color', 'pink');
             });
         });
+=======
+// #cancer
+
+
+
+	tabel=$('#myTable').DataTable( {
+				dom: 'Bfrtip',
+				buttons: [ 
+					'CSV', 'PDF', 'EXCEL'
+				]
+			});
+			
+	tabel.page.len( -1 ).draw();
+	
+	tabel=$('#myTable2').DataTable(	dom: 'Bfrtip',buttons: ['CSV', 'PDF', 'EXCEL']);
+			
+	tabel.page.len( -1 ).draw();
+	tabel=$('#myTable3').DataTable(	dom: 'Bfrtip',buttons: [ 'CSV', 'PDF', 'EXCEL'],'ordering':false,'columns.orderable': false);
+	tabel.page.len( -1 ).draw();
+
+
+	
+    var form = document.getElementsByTagName("form");
+    form.onsubmit = function () {
+        form.reset();
+    };
+
+
+jQuery(document).ready(function($) {
+	
+    $(".clickable-row").each(function(){
+		$(this).click(function(){
+			window.open ( $(this).data("href"));
+			$(this).css('background-color', 'pink');
+
+		});
+	});
+>>>>>>> 59e624cf8807579d493f5d10cdda9a93964c97c3
     });
 </script>
 
