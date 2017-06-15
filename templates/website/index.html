@@ -19,10 +19,11 @@
 	<h1>Sisestage algtekst</h1>
 	<form method="POST" class="post-form">{% csrf_token %} 
 		{{ form.as_p }} 
-		<button type="submit" class="save btn btn-default">Saada</button>
 		<!-- Kas laadida Külgnevusmaatriks või mitte.  -->
 		<input type="checkbox" id="checkbox">Lae Külgnevusmaatriksit
-	</form>
+		<br>
+		<button type="submit" class="save btn btn-default">Saada</button>
+		</form>
 	</div>
 
 	<div>
@@ -207,9 +208,9 @@
 			$(document).ready(function () {
 				$('#checkbox').change(function () {
 					if (!this.checked) 
-						$('#myTable3').fadeIn('slow');
+						$('#myTable3').fadeIn('fast');
 					else 
-						$('#myTable3').fadeOut('slow');
+						$('#myTable3').fadeOut('fast');
 				});
 			});
 
