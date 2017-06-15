@@ -2,18 +2,19 @@ from django.shortcuts import render
 from .backend import *
 from .forms import InputForm
 
+
 def post_list(request):
     return render(request, 'website/post_list.html', {})
-	
-def index(request):
-	
 
+
+
+def index(request):
 	# Genereerib tavalise formi HTML's.
 	if request.method != "POST":
 		form = InputForm()
 		return render(request, "website/index.html", {'form': form})
 
-		
+
 	# Juhul kui form on saadetud, võta POST sees tekst ja lase läbi EstNLTK backendi.
 	# df filtreerib tekstist välja arvud (300), nimed ja lausemärgid/sümbolid.
 	# counted_lemmas kujul [['lemma', kogus], ['lemma', kogus], ['lemma', kogus], ['lemma', kogus]]
