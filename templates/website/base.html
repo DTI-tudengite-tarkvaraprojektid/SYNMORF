@@ -32,20 +32,17 @@
 <script>
 
 // #cancer
-	tabel=$('#myTable').DataTable();
-	tabel.page.len( -1 ).draw();
+	lemmaTabel=$('#myTable').DataTable();
+	lemmaTabel.page.len( -1 ).draw();
 	tabel=$('#myTable2').DataTable();
 	tabel.page.len( -1 ).draw();
-	tabel=$('#myTable3').DataTable();
+	tabel=$('#myTable3').DataTable({  
+	'ordering':false,
+    'columns.orderable': false })
 	tabel.page.len( -1 ).draw();
 
 	
 
-	$(document).ready(function(){$('#myTable2').DataTable();});
-    $(document).ready(function(){$('#myTable3').DataTable({
-        'ordering':false,
-        'columns.orderable': false
-	});});
 
 
 
@@ -55,15 +52,17 @@
         form.reset();
     };
 
+jQuery(document).ready(function ($) {
 
-jQuery(document).ready(function($) {
-	
-    $(".clickable-row").each(function(){
-		$(this).click(function(){
-			window.open ( $(this).data("href"));
-			$(this).css('background-color', 'pink');
-		});
-	});
+        $(".clickable-row").each(function () {
+            $(this).click(function () {
+                var value = $(this).attr('id');
+				lemmaTabel.search(value).draw();
+				//window.open($(this).data("href"));
+                $(this).css('background-color', 'pink');
+            });
+        });
     });
+
 </script>
 

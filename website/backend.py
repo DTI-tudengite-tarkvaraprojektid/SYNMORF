@@ -16,25 +16,17 @@ def get_filtered_content(text):
 
 
 # Loendab ära lemmade arve, tagastab kujul [("lemma", arv), ("lemma2", arv2), (... , ...)]
-def count_lemmas(dataframe):
-	list_of_lemmas = dataframe.tolist()
-	c = Counter(list_of_lemmas)
-	return c.most_common(100)
+def count_attribute(dataframe, attribute):
+	dataframe = dataframe[attribute]
+	list_of_attributes = dataframe.tolist()
+	c = Counter(list_of_attributes)
+	return c.most_common()
 
-
-# Tagastab laisalt postagide arvu kaks korda.
-# Salvestab samasse kausta piechard'i posttagide arvude kohta.
-# Tight layout hoolitseb selle eest, et sildid mõõda ei läheks.
-# Sort järiestab suuremast-väiksemani, head võtab välja viis esimest tulemust.
-def make_postag_chart(dataframe):
-	df1 = dataframe.groupby('postag_descriptions').size().reset_index(name='counts').sort_values("counts", ascending=False).head(5)
-
-
-# Annab piechart'i sõnavormidest.
-# Salvestab tulemuse static kausta, kust Django saab staatilisi resursse kasutada.
-def wordform_chart(dataframe):
-	df1 = dataframe.groupby('descriptions').size().reset_index(name='counts').sort_values("counts", ascending=False).head(5)
-
+def count_basewords(dataframe):
+	dataframe = dataframe[dataframe["word_texts","lemmas"]]
+	list_of_attributes = list(dataframe)
+	c = Counter(list_of_attributes)
+	return c.most_common()	
 
 
 # [[lemma], [lemma], [lemma]]
@@ -47,19 +39,13 @@ def find_ngrams(input_list, n):
 
 # Võtab sisse dataframe, muudab listiks, numbri selleks kui suur on tähejäriendid.
 def get_letter_sequence(dataframe, n_gram):
-	iterable = list(dataframe.unique())
+	iterable = list(dataframe)
 	temp = []
 	for sona in iterable:
 		for i in range(len(sona) - n_gram + 1):
 			temp.append(sona[i:i + n_gram])
-	return Counter(temp).most_common(100)
+	return Counter(temp).most_common()
 
-	
-# # argument on dataframe'i kujul
-# def get_base_words(lemma):
-# 	df = filtered_dataframe[filtered_dataframe.lemmas == lemma]
-# 	df = list(df.word_texts)
-# 	return anti_lemma
 
 
 def get_adjandency_matrix(text, ngramms):

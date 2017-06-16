@@ -3,6 +3,16 @@ from .backend import *
 from .forms import InputForm
 
 
+#def some_view(request):
+    #do some stuff
+  #  request.session['_old_post'] = request.POST
+ #   return HttpResponseRedirect('next_view')
+
+#def next_view(request):
+ #   old_post = request.session.get('_old_post')
+    #do some stuff using old_post
+
+
 def post_list(request):
     return render(request, 'website/post_list.html', {})
 	
@@ -26,10 +36,12 @@ def index(request):
 		ngrams = int(request.POST.get('n_gram'))
 
 		df = get_filtered_content(text)
-		counted_lemmas = count_lemmas(df["lemmas"])
+		counted_lemmas = count_attribute(df,"lemmas")
+		counted_basewords = count_basewords(df)
+
 		letter_sequence = get_letter_sequence(df.lemmas, ngrams)
 		adjacency_matrix, headers = get_adjandency_matrix(text, ngrams)
 
 
 		form = InputForm()
-		return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters':letter_sequence, 'matrix': adjacency_matrix, 'header': headers})
+		return render(request, "website/index.html", {'form': form, "basewords": counted_basewords,  'lemmas': counted_lemmas, 'letters':letter_sequence, 'matrix': adjacency_matrix, 'header': headers})
