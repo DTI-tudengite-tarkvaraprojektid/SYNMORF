@@ -19,11 +19,8 @@
 	<h1>Sisestage algtekst</h1>
 	<form method="POST" class="post-form">{% csrf_token %} 
 		{{ form.as_p }} 
-		<!-- Kas laadida Külgnevusmaatriks või mitte.  -->
-		<input type="checkbox" id="checkbox">Lae Külgnevusmaatriksit
-		<br>
 		<button type="submit" class="save btn btn-default">Saada</button>
-		</form>
+	</form>
 	</div>
 
 	<div>
@@ -137,7 +134,6 @@
         <!-- bar chart canvas element -->
         <canvas id="income" width="600" height="400" style="display: block;margin: auto"></canvas><br>
         <script>
-
             // line chart data
             var buyerData = {
                 labels: ["January", "February", "March", "April", "May", "June"],
@@ -204,17 +200,6 @@
             var income = document.getElementById("income").getContext("2d");
             // draw bar chart
             new Chart(income).Bar(barData);
-			// checkbox
-			$(document).ready(function () {
-				$('#checkbox').change(function () {
-					if (!this.checked) 
-						$('#myTable3').fadeIn('fast');
-					else 
-						$('#myTable3').fadeOut('fast');
-				});
-			});
-
-
         </script>
 
     {% endif %}

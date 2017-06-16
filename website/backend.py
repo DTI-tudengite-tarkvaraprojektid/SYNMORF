@@ -24,7 +24,31 @@ def count_attribute(dataframe, attribute):
 	return c.most_common()
 
 
-# Input_list peab olema kujul [[lemma], [lemma], [lemma]]
+# dataframe sõnade  list loomine
+def word_counter(dataframe):
+	list_of_words = dataframe["word_texts"].tolist()
+	
+
+def wordform_chart(dataframe):
+	df1 = dataframe.groupby('descriptions').size().reset_index(name='counts').sort_values("counts", ascending=False).head(5)
+
+	
+# Loendab ära tekstis olevad sonad arvudena, tagastab kujul [("sona", arv), ("sona", arv2), (... , ...)]
+def list_of_words(list_of_words):
+	c = Counter(list_of_words)
+	return c.most_common()
+ 
+	
+# võtab sisse listi, numbrid 	
+def get_word_sequence(iterable, word_texts):
+	temp=[]
+	for pikkus in iterable:		
+		for i in range(len(pikkus)):
+			temp.append(pikkus[i:i])
+	return Counter(temp).most_common()
+
+	
+
 def find_ngrams(input_list, n):
 	temp = []
 	for word in input_list:
@@ -40,7 +64,8 @@ def get_letter_sequence(dataframe, n_gram):
 	for sona in iterable:
 		for i in range(len(sona) - n_gram + 1):
 			temp.append(sona[i:i + n_gram])
-	return Counter(temp).most_common(100)
+	return Counter(temp).most_common()
+
 
 
 def get_adjandency_matrix(text, ngramms):
