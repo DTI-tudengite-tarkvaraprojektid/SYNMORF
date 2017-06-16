@@ -17,7 +17,7 @@
 
 	<div>
 	<h1>Sisestage algtekst</h1>
-	<form method="POST" class="post-form">{% csrf_token %} 
+	<form method="POST" action="" class="post-form">{% csrf_token %} 
 		{{ form.as_p }} 
 		<button type="submit" class="save btn btn-default">Saada</button>
 	</form>
@@ -26,7 +26,8 @@
 	<div>
 	<p class="clear"> </p>
 	</div>
-
+<!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
+	{% if lemmas %}
 	    <div class="table-container">
 			<h1>tähejäriendid</h1>
 			<div class="scroll">
@@ -63,8 +64,9 @@
 	<!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
 	{% if lemmas %}
 		
-		
+
 		<div class="table-container">
+
 		<h1>lemmad</h1>
 
 		<div class="scroll">
@@ -94,7 +96,39 @@
 			</table>
 		</div>	
 		</div>
- 
+		
+		<div class="table-container-right">
+		<h1>Lemmad</h1>
+
+		<div class="scroll">
+			<table class="table table-striped" id="myTable">
+
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Vorm</th>
+						<th>Lemma</th>
+						<th>Kogus</th>						
+					</tr>
+				</thead>
+				<tbody>
+				
+					<!-- Võtab sisse lemmade listi ja kirjutab välja iga for tsükkliga tabeli rea. -->
+					<!-- Kuna lemma on list, siis selle elementide indekseerimine käib punkti abil. vt rida 30/31. -->
+					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
+					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
+					{% for word_text in basewords %}
+						<tr  class='clickable-row'  id='{{lemma.0}}'>
+							<td>{{ forloop.counter }}</td>
+							<td>{{ word_text.0 }}</td>
+							<td>{{ word_text.1 }}</td>
+							<td>{{ word_text.2 }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>	
+		</div>
 	<div>
 	<p class="clear"></p>
 	</div>
@@ -200,7 +234,7 @@
             // draw bar chart
             new Chart(income).Bar(barData);
         </script>
-
+	{% endif %}
     {% endif %}
 
 {% endblock %}

@@ -1,6 +1,19 @@
-﻿from django.shortcuts import render
+from django.shortcuts import render
 from .backend import *
 from .forms import InputForm
+#def some_view(request):
+    #do some stuff
+  #  request.session['_old_post'] = request.POST
+ #   return HttpResponseRedirect('next_view')
+
+#def next_view(request):
+ #   old_post = request.session.get('_old_post')
+    #do some stuff using old_post
+
+
+#def post_list(request):
+ #   return render(request, 'website/post_list.html', {})
+	
 
 
 
@@ -27,3 +40,4 @@ def index(request):
 		form = InputForm()
 
 		return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters': letter_sequence, 'matrix': adjacency_matrix, 'header': headers})
+

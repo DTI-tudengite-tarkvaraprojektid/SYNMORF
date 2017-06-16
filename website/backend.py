@@ -15,6 +15,11 @@ def make_dataframe(text):
 			dataframe.postag_descriptions != "pärisnimi") & dataframe.word_texts.apply(lambda sona: sona.isalpha())]
 	return filtered_dataframe
 
+	#def count_basewords(dataframe):
+	# dataframe = dataframe[dataframe["word_texts","lemmas"]]
+	# list_of_attributes = list(dataframe)
+	# c = Counter(list_of_attributes)
+	# return c.most_common()	
 
 # Loendab ära lemmade arve, tagastab kujul [("lemma", arv), ("lemma2", arv2), (... , ...)]
 def count_attribute(dataframe, attribute):
@@ -103,3 +108,4 @@ def get_adjandency_matrix(text, ngramms):
 	value_matrix = pd.DataFrame(two_dimensional_array, index=flatten, columns=flatten).values.tolist()
 
 	return value_matrix, flatten
+
