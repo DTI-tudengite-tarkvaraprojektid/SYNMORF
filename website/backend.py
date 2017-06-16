@@ -97,6 +97,10 @@ def get_adjandency_matrix(text, ngramms):
 
 	# Muutab andmed loetavaks kuujuks.
 	value_matrix = pd.DataFrame(two_dimensional_array, index=flatten, columns=flatten).values.tolist()
-
-	return value_matrix, flatten
+	if checkbox=true
+		return value_matrix, flatten
+	else
+		print("Maatriksit ei kuvata")
+			
+	
 
