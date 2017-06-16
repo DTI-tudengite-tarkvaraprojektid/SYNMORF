@@ -109,3 +109,4 @@ def get_adjandency_matrix(text, ngramms):
 
 	return value_matrix, flatten
 
+

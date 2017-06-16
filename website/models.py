@@ -54,4 +54,3 @@ class Content(models.Model):
 
 	# Ilukirjandus, Esseistika, Epistolaarne kirjandus, Memuaristika, Kroonikakirjandus, Teaduskirjandus, Populaarteaduslik, Faktikirjandus
 	# Teabekirjandus, Õppekirjandus, Teatmekirjandus, Tarbekirjandus, Kommertsteksti, Poliitiline kirjandus, Vaimulik kirjandus, Epitaafid, Muusika literatuur
-
