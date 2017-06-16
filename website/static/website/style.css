@@ -36,33 +36,19 @@ h1, h2, h3, h4 {
 }
 
 
-/* .table-container {
+.table-container {
     display: block;
-    height: 514px;
-    width: 50%; 
-    overflow-y: scroll;
-	overflow-x: hidden;
-    table-layout: fixed; !important;
-	
-} */
-.table-container-left {
-    display: block;
-    height: 520px !important;
-    width: 520px !important;
+	width: 33%;
     table-layout: fixed !important;
 	float:left !important;
-}
-.table-container-right {
-    display: block ;
-    height: 520px!important;
-    width: 520px !important;
-    table-layout: fixed !important;
-	float:right !important;
+	padding-right: 20px;
+	padding-left: 20px;
 	
-}.scroll {
+}
+
+.scroll {
 	display: block;
-    height: 520px !important;
-    width: 520px !important;
+    height: 625px !important;
     table-layout: fixed !important;
     overflow-y: scroll;
 	overflow-x: hidden;
@@ -83,6 +69,22 @@ h1, h2, h3, h4 {
     background-color: #C0C0C0 !important;
 }
 
+
 input, label {
-    display:block;
+    display:block;  }
+
+
+
+button{
+    float: right;
+}
+
+@media (max-width: 1200px) {
+  .table-container {
+		display: block;
+		width: 100%;
+		table-layout: fixed !important;
+		float:left !important;
+		
+	}
 }
