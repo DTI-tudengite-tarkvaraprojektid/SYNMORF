@@ -29,7 +29,7 @@
 <!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
 	{% if lemmas %}
 	    <div class="table-container">
-			<h1>tähejäriendid</h1>
+			<h1>Tähejäriendid</h1>
 			<div class="scroll">
 
 				<table class="table table-striped" id="myTable2">
@@ -67,7 +67,7 @@
 
 		<div class="table-container">
 
-		<h1>lemmad</h1>
+		<h1>Lemmad</h1>
 
 		<div class="scroll">
 			<table class="table table-striped" id="myTable">
@@ -86,7 +86,7 @@
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
 					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
 					{% for lemma in lemmas %}
-						<tr  class='clickable-row'  data-href='post_list.html?lemma={{ lemma.0 }}' >
+						<tr  class='dickable-row'  id='{{lemma.0}}'>
 							<td>{{ forloop.counter }}</td>
 							<td>{{ lemma.0 }}</td>
 							<td>{{ lemma.1 }}</td>
@@ -98,14 +98,14 @@
 		</div>
 		
 		<div class="table-container-right">
-		<h1>Lemmad</h1>
+		<h1>Vormid</h1>
 
 		<div class="scroll">
-			<table class="table table-striped" id="myTable">
+			<table class="table table-striped" id="myTable4">
 
 				<thead>
 					<tr>
-						<th>#</th>
+						
 						<th>Vorm</th>
 						<th>Lemma</th>
 						<th>Kogus</th>						
@@ -117,12 +117,12 @@
 					<!-- Kuna lemma on list, siis selle elementide indekseerimine käib punkti abil. vt rida 30/31. -->
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
 					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
-					{% for word_text in basewords %}
-						<tr  class='clickable-row'  id='{{lemma.0}}'>
-							<td>{{ forloop.counter }}</td>
-							<td>{{ word_text.0 }}</td>
+					{% for word_text in word_texts %}
+						<tr  class='clickable-row' >
+							
 							<td>{{ word_text.1 }}</td>
 							<td>{{ word_text.2 }}</td>
+							<td>{{ word_text.3 }}</td>
 						</tr>
 					{% endfor %}
 				</tbody>

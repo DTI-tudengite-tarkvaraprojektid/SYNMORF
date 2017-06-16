@@ -7,6 +7,7 @@ import pandas as pd
 
 # Eemaldab sisestatud sõnadest arvud, lausemärgid ja nimed.
 # Tagastab DataFrame, ei eemaldata duplikaate.
+
 def make_dataframe(text):
 	dataframe = Text(text).get(["word_texts", "lemmas", "postag_descriptions", "descriptions"]).as_dataframe
 	filtered_dataframe = dataframe[
@@ -15,11 +16,19 @@ def make_dataframe(text):
 			dataframe.postag_descriptions != "pärisnimi") & dataframe.word_texts.apply(lambda sona: sona.isalpha())]
 	return filtered_dataframe
 
-	#def count_basewords(dataframe):
-	# dataframe = dataframe[dataframe["word_texts","lemmas"]]
-	# list_of_attributes = list(dataframe)
-	# c = Counter(list_of_attributes)
-	# return c.most_common()	
+def count_basewords(dataframe):
+
+
+	dataframe = dataframe["word_texts"]
+	list_of_attributes = list(dataframe)
+	c = Counter(list_of_attributes)
+	return c.most_common()	
+	
+def get_it_all(filtered_dataframe):
+
+	t5 = pd.merge(pd.DataFrame.from_records(count_basewords(filtered_dataframe)), filtered_dataframe, left_on=0, right_on="word_texts")[["word_texts", "lemmas", 1]].drop_duplicates()
+	t5.columns = ["word_texts", "lemmas", "countDracula"]
+	return t5.to_records()
 
 # Loendab ära lemmade arve, tagastab kujul [("lemma", arv), ("lemma2", arv2), (... , ...)]
 def count_attribute(dataframe, attribute):
@@ -108,5 +117,4 @@ def get_adjandency_matrix(text, ngramms):
 	value_matrix = pd.DataFrame(two_dimensional_array, index=flatten, columns=flatten).values.tolist()
 
 	return value_matrix, flatten
-
 

@@ -31,13 +31,17 @@ def index(request):
 
 		text = request.POST.get("text")
 		ngrams = int(request.POST.get('n_gram'))
-
 		df = make_dataframe(text)
+		
+		
 		counted_lemmas = count_attribute(df, "lemmas")  # [['lemma', kogus], ['lemma', kogus]]
+		print(counted_lemmas)
 		letter_sequence = get_letter_sequence(df, ngrams)  # [['tähejäriend', kogus], ['tähejäriend', kogus]]
+		counted_basewords_lemmas = get_it_all(df)
+		print(counted_basewords_lemmas)
 		adjacency_matrix, headers = get_adjandency_matrix(text, ngrams)  # Annab välja maatriksi ja maatriksi tulpade pealkirjad.
 
 		form = InputForm()
 
-		return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters': letter_sequence, 'matrix': adjacency_matrix, 'header': headers})
+		return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters': letter_sequence,'word_texts': counted_basewords_lemmas, 'matrix': adjacency_matrix, 'header': headers})
 
