@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from .backend import *
 from .forms import InputForm
-
-
 #def some_view(request):
     #do some stuff
   #  request.session['_old_post'] = request.POST
@@ -13,13 +11,15 @@ from .forms import InputForm
     #do some stuff using old_post
 
 
-def post_list(request):
-    return render(request, 'website/post_list.html', {})
+#def post_list(request):
+ #   return render(request, 'website/post_list.html', {})
 	
 
 
+
+
 def index(request):
-	# Genereerib tavalise formi HTML's.
+	# Genereerib tavalise formi HTML's kui formi ei ole saadetud.
 	if request.method != "POST":
 		form = InputForm()
 		return render(request, "website/index.html", {'form': form})
@@ -27,21 +27,17 @@ def index(request):
 
 	# Juhul kui form on saadetud, võta POST sees tekst ja lase läbi EstNLTK backendi.
 	# df filtreerib tekstist välja arvud (300), nimed ja lausemärgid/sümbolid.
-	# counted_lemmas kujul [['lemma', kogus], ['lemma', kogus], ['lemma', kogus], ['lemma', kogus]]
-	# get_letter_sequence võtab sisse lemmade listi ja n-grami suuruse ja tagastab need kujul [['tähejäriendid', kogus], ['tähejäriendid', kogus]].
 	else:
-
 
 		text = request.POST.get("text")
 		ngrams = int(request.POST.get('n_gram'))
 
-		df = get_filtered_content(text)
-		counted_lemmas = count_attribute(df,"lemmas")
-		counted_basewords = count_basewords(df)
-
-		letter_sequence = get_letter_sequence(df.lemmas, ngrams)
-		adjacency_matrix, headers = get_adjandency_matrix(text, ngrams)
-
+		df = make_dataframe(text)
+		counted_lemmas = count_attribute(df, "lemmas")  # [['lemma', kogus], ['lemma', kogus]]
+		letter_sequence = get_letter_sequence(df, ngrams)  # [['tähejäriend', kogus], ['tähejäriend', kogus]]
+		adjacency_matrix, headers = get_adjandency_matrix(text, ngrams)  # Annab välja maatriksi ja maatriksi tulpade pealkirjad.
 
 		form = InputForm()
-		return render(request, "website/index.html", {'form': form, "basewords": counted_basewords,  'lemmas': counted_lemmas, 'letters':letter_sequence, 'matrix': adjacency_matrix, 'header': headers})
+
+		return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters': letter_sequence, 'matrix': adjacency_matrix, 'header': headers})
+
