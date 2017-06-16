@@ -26,7 +26,8 @@
 	<div>
 	<p class="clear"> </p>
 	</div>
-
+<!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
+	{% if lemmas %}
 	    <div class="table-container">
 			<h1>tähejäriendid</h1>
 			<div class="scroll">
@@ -63,12 +64,9 @@
 	<!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
 	{% if lemmas %}
 		
-<<<<<<< HEAD
-		<div class="table-container-left">
-=======
-		
+
 		<div class="table-container">
->>>>>>> 88d7bdb2ec6ebe89700e9169ae164353e96e11c0
+
 		<h1>lemmad</h1>
 
 		<div class="scroll">
@@ -131,42 +129,6 @@
 			</table>
 		</div>	
 		</div>
- 
-<<<<<<< HEAD
-        
-        <div class="table-container-left">
-		<h1>Tähejäriendid</h1>
-		<div class="scroll">
-
-            <table class="table table-striped" id="myTable2">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Tähejäriend</th>
-                    <th>Kogus</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Forloop counter loeb üle mitu korda for loop on oma tsükklit teinud -->
-                <!-- Lisatud selle jaoks, et näha kui mitmendal kohal sageduse poolest see esineb.-->
-                {% for letter in letters %}
-
-                    
-					<tr class='clickable-row' id='{{letter.0}}'>
-                        <td>{{ forloop.counter }}</td>
-                        <td>{{ letter.0 }}</td>
-                        <td>{{ letter.1 }}</td>
-                    </tr>
-
-					
-                {% endfor %}
-                </tbody>
-				
-            </table>
-			</div>
-        </div>
-=======
->>>>>>> 88d7bdb2ec6ebe89700e9169ae164353e96e11c0
 	<div>
 	<p class="clear"></p>
 	</div>
@@ -272,7 +234,7 @@
             // draw bar chart
             new Chart(income).Bar(barData);
         </script>
-
+	{% endif %}
     {% endif %}
 
 {% endblock %}
