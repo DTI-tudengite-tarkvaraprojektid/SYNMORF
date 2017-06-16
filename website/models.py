@@ -21,23 +21,8 @@ MY_CHOICES = (('Ilukirjandus', 'Ilukirjandus'),
               ('Epitaafid', 'Epitaafid'),
               ('Muusika literatuur', 'Muusika literatuur'))
 
-MY_CHOICES2 = (('Ilukirjandus', 'Ilukirjandus'),
-               ('Esseistika', 'Esseistika'),
-               ('Epistolaarne kirjandus', 'Epistolaarne kirjandus'),
-               ('Memuaristika', 'Memuaristika'),
-               ('Kroonikakirjandus', 'Kroonikakirjandus'),
-               ('Teaduskirjandus', 'Teaduskirjandus'),
-               ('Populaarteaduslik', 'Populaarteaduslik'),
-               ('Faktikirjandus', 'Faktikirjandus'),
-               ('Teabekirjandus', 'Teabekirjandus'),
-               ('Õppekirjandus', 'Õppekirjandus'),
-               ('Teatmekirjandus', 'Teatmekirjandus'),
-               ('Tarbekirjandus', 'Tarbekirjandus'),
-               ('Kommertsteksti', 'Kommertsteksti'),
-               ('Poliitiline kirjandus', 'Poliitiline kirjandus'),
-               ('Vaimulik kirjandus', 'Vaimulik kirjandus'),
-               ('Epitaafid', 'Epitaafid'),
-               ('Muusika literatuur', 'Muusika literatuur'))
+MY_CHOICES2 = (('Vaikimisi', 'Vaikimisi'),
+               ('Maatriksiga', 'Maatriksiga'))
 
 
 class Content(models.Model):
@@ -46,6 +31,7 @@ class Content(models.Model):
 	n_gram = models.PositiveIntegerField(validators=[MinValueValidator(1)], default=1)
 	title = models.CharField(max_length=50, default="")
 	types = models.CharField(max_length=100, choices=MY_CHOICES, default='Ilukirjandus')
+	maatriks = models.CharField(max_length=100, choices=MY_CHOICES2, default='Vaikimisi')
 	created = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):

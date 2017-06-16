@@ -132,7 +132,7 @@
 	<div>
 	<p class="clear"></p>
 	</div>
-	
+	{% if matrix %}
 	<h1 style="margin-top: 30px;">Külgnevusmaatriks</h1>
         <div class="matrix-container">
             
@@ -159,7 +159,7 @@
                 </tbody>
             </table>
         </div>
-
+       {% endif %}
         <!-- line chart canvas element -->
         <canvas id="buyers" width="600" height="400" style=" display: block; margin: auto; margin-top: 50px"></canvas><br>
 		<!-- pie chart canvas element -->
