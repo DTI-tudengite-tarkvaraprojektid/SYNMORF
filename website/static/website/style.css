@@ -63,6 +63,11 @@ h1, h2, h3, h4 {
     table-layout: fixed !important;
 }
 
+.cable-row:hover {
+    color: #0000FF;
+    background-color: #C0C0C0 !important;
+}
+
 .dickable-row:hover {
     color: #0000FF;
     background-color: #C0C0C0 !important;

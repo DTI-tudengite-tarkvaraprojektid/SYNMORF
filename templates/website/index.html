@@ -19,10 +19,11 @@
 	<h1>Sisestage algtekst</h1>
 	<form method="POST" action="" class="post-form">{% csrf_token %} 
 		{{ form.as_p }} 
+		
 		<button type="submit" class="save btn btn-default">Saada</button>
 	</form>
+	<button class="btn btn-success btn-md" > ? </button>
 	</div>
-
 	<div>
 	<p class="clear"> </p>
 	</div>
@@ -118,7 +119,7 @@
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
 					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
 					{% for word_text in word_texts %}
-						<tr  class='clickable-row' >
+						<tr  class='cable-row' >
 							
 							<td>{{ word_text.1 }}</td>
 							<td>{{ word_text.2 }}</td>
@@ -132,7 +133,7 @@
 	<div>
 	<p class="clear"></p>
 	</div>
-	
+	{% if matrix %}
 	<h1 style="margin-top: 30px;">Külgnevusmaatriks</h1>
         <div class="matrix-container">
             
@@ -159,7 +160,7 @@
                 </tbody>
             </table>
         </div>
-
+       {% endif %}
         <!-- line chart canvas element -->
         <canvas id="buyers" width="600" height="400" style=" display: block; margin: auto; margin-top: 50px"></canvas><br>
 		<!-- pie chart canvas element -->
