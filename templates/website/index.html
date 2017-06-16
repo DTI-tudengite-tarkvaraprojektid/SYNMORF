@@ -3,11 +3,6 @@
 {% load filter_tags %}
 
 
-
-
-
-
-
 <!-- Tegemist on puhta html koodiga, mis Django raamistiku töttu lubab {} sees kasutada Pythoni koodi 'template tag' kasutades.
 <!-- Loogsulud protsentidega tähistab et tegemist on Pythoni keele võtmesõnaga. -->
 <!-- Topeltloogsulud. tähistab Pythoni muutujat, mida me t012loputoo/website/views.py muudame selles failis arusaadavaks.
@@ -32,14 +27,45 @@
 	<p class="clear"> </p>
 	</div>
 
-	
+	    <div class="table-container">
+			<h1>tähejäriendid</h1>
+			<div class="scroll">
+
+				<table class="table table-striped" id="myTable2">
+					<thead>
+					<tr>
+						<th>#</th>
+						<th>Tähejäriend</th>
+						<th>Kogus</th>
+					</tr>
+					</thead>
+					<tbody>
+					<!-- Forloop counter loeb üle mitu korda for loop on oma tsükklit teinud -->
+					<!-- Lisatud selle jaoks, et näha kui mitmendal kohal sageduse poolest see esineb.-->
+					{% for letter in letters %}
+
+						
+						<tr class='clickable-row' id='{{letter.0}}'>
+							<td>{{ forloop.counter }}</td>
+							<td>{{ letter.0 }}</td>
+							<td>{{ letter.1 }}</td>
+						</tr>
+
+						
+					{% endfor %}
+					</tbody>
+					
+				</table>
+				</div>
+        </div>
+
 
 	<!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
 	{% if lemmas %}
 		
 		
-		<div class="table-container-right">
-		<h1>Enimkasutatud lemmad</h1>
+		<div class="table-container">
+		<h1>lemmad</h1>
 
 		<div class="scroll">
 			<table class="table table-striped" id="myTable">
@@ -69,43 +95,11 @@
 		</div>	
 		</div>
  
-<<<<<<< HEAD
-        
-        <div class="table-container-left">
-		<h1>Enimesinevad tähejäriendid</h1>
-		<div class="scroll">
-
-            <table class="table table-striped" id="myTable2">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Tähejäriend</th>
-                    <th>Kogus</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Forloop counter loeb üle mitu korda for loop on oma tsükklit teinud -->
-                <!-- Lisatud selle jaoks, et näha kui mitmendal kohal sageduse poolest see esineb.-->
-                {% for letter in letters %}
-
-                    
-					<tr class='clickable-row'>
-                        <td>{{ forloop.counter }}</td>
-                        <td>{{ letter.0 }}</td>
-                        <td>{{ letter.1 }}</td>
-                    </tr>
-
-					
-                {% endfor %}
-                </tbody>
-				
-            </table>
-			</div>
-        </div>
 	<div>
 	<p class="clear"></p>
 	</div>
-	<h1 style="margin-top: 100px;">Külgnevusmaatriks</h1>
+	
+	<h1 style="margin-top: 30px;">Külgnevusmaatriks</h1>
         <div class="matrix-container">
             
             <table class="table table-striped" id="myTable3">
@@ -133,11 +127,11 @@
         </div>
 
         <!-- line chart canvas element -->
-        <canvas id="buyers" width="600" height="400" style=" display: block; margin: auto"></canvas><br>
+        <canvas id="buyers" width="600" height="400" style=" display: block; margin: auto; margin-top: 50px"></canvas><br>
 		<!-- pie chart canvas element -->
-        <canvas id="countries" width="600" height="400" style="display: block;margin: auto"></canvas><br>
+        <canvas id="countries" width="600" height="400" style="display: block;margin: auto; margin-top: 50px"></canvas><br>
         <!-- bar chart canvas element -->
-        <canvas id="income" width="600" height="400" style="display: block;margin: auto"></canvas><br>
+        <canvas id="income" width="600" height="400" style="display: block;margin: auto; margin-top: 50px"></canvas><br>
         <script>
             // line chart data
             var buyerData = {
