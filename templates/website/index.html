@@ -47,10 +47,10 @@
 					{% for letter in letters %}
 
 						
-						<tr class='clickable-row' id='{{letter.0}}'>
-							<td>{{ forloop.counter }}</td>
-							<td>{{ letter.0 }}</td>
-							<td>{{ letter.1 }}</td>
+						<tr onclick="clicked(this)" class='clickable-row' id='{{letter.0}}'>
+							<td style='cursor:pointer'>{{ forloop.counter }}</td>
+							<td style='cursor:pointer'>{{ letter.0 }}</td>
+							<td style='cursor:pointer'>{{ letter.1 }}</td>
 						</tr>
 
 						
@@ -87,10 +87,10 @@
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
 					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
 					{% for lemma in lemmas %}
-						<tr  class='dickable-row'  id='{{lemma.0}}'>
-							<td>{{ forloop.counter }}</td>
-							<td>{{ lemma.0 }}</td>
-							<td>{{ lemma.1 }}</td>
+						<tr onclick="dicked(this)" class='dickable-row'  id='{{lemma.0}}'>
+							<td style='cursor:pointer'>{{ forloop.counter }}</td>
+							<td style='cursor:pointer'>{{ lemma.0 }}</td>
+							<td style='cursor:pointer'>{{ lemma.1 }}</td>
 						</tr>
 					{% endfor %}
 				</tbody>
