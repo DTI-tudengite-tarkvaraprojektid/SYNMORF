@@ -1,5 +1,4 @@
 from estnltk import Text
-from pprint import pprint
 from collections import Counter
 import numpy as np
 import pandas as pd
@@ -7,7 +6,6 @@ import pandas as pd
 
 # Eemaldab sisestatud sõnadest arvud, lausemärgid ja nimed.
 # Tagastab DataFrame, ei eemaldata duplikaate.
-
 def make_dataframe(text):
 	dataframe = Text(text).get(["word_texts", "lemmas", "postag_descriptions", "descriptions"]).as_dataframe
 	filtered_dataframe = dataframe[
@@ -16,19 +14,20 @@ def make_dataframe(text):
 			dataframe.postag_descriptions != "pärisnimi") & dataframe.word_texts.apply(lambda sona: sona.isalpha())]
 	return filtered_dataframe
 
+
+# Väljund kujul [("sõna", kogus),("sõna", kogus),("sõna", kogus)]
 def count_basewords(dataframe):
-
-
 	dataframe = dataframe["word_texts"]
 	list_of_attributes = list(dataframe)
 	c = Counter(list_of_attributes)
-	return c.most_common()	
-	
-def get_it_all(filtered_dataframe):
+	return c.most_common()
 
+
+def get_it_all(filtered_dataframe):
 	t5 = pd.merge(pd.DataFrame.from_records(count_basewords(filtered_dataframe)), filtered_dataframe, left_on=0, right_on="word_texts")[["word_texts", "lemmas", 1]].drop_duplicates()
 	t5.columns = ["word_texts", "lemmas", "countDracula"]
 	return t5.to_records()
+
 
 # Loendab ära lemmade arve, tagastab kujul [("lemma", arv), ("lemma2", arv2), (... , ...)]
 def count_attribute(dataframe, attribute):
@@ -41,27 +40,27 @@ def count_attribute(dataframe, attribute):
 # dataframe sõnade  list loomine
 def word_counter(dataframe):
 	list_of_words = dataframe["word_texts"].tolist()
-	
+
 
 def wordform_chart(dataframe):
 	df1 = dataframe.groupby('descriptions').size().reset_index(name='counts').sort_values("counts", ascending=False).head(5)
 
-	
+
 # Loendab ära tekstis olevad sonad arvudena, tagastab kujul [("sona", arv), ("sona", arv2), (... , ...)]
 def list_of_words(list_of_words):
 	c = Counter(list_of_words)
 	return c.most_common()
- 
-	
-# võtab sisse listi, numbrid 	
+
+
+# Võtab sisse listi, numbrid.
 def get_word_sequence(iterable, word_texts):
-	temp=[]
-	for pikkus in iterable:		
+	temp = []
+	for pikkus in iterable:
 		for i in range(len(pikkus)):
 			temp.append(pikkus[i:i])
-	return Counter(temp).most_common()
+	c = Counter(temp)
+	return c.most_common()
 
-	
 
 def find_ngrams(input_list, n):
 	temp = []
@@ -79,7 +78,6 @@ def get_letter_sequence(dataframe, n_gram):
 		for i in range(len(sona) - n_gram + 1):
 			temp.append(sona[i:i + n_gram])
 	return Counter(temp).most_common()
-
 
 
 def get_adjandency_matrix(text, ngramms):
@@ -112,9 +110,7 @@ def get_adjandency_matrix(text, ngramms):
 			# If lause ise on selleks et list indeksist välja ei läheks, hüppab pidevalt üle ühe.
 			if i < len(word) - ngramms: two_dimensional_array[index_x][flatten.index(word[i + ngramms])] += 1
 
-
 	# Muutab andmed loetavaks kuujuks.
 	value_matrix = pd.DataFrame(two_dimensional_array, index=flatten, columns=flatten).values.tolist()
 
 	return value_matrix, flatten
-

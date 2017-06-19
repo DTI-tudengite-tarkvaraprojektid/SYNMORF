@@ -3,6 +3,7 @@ from multiselectfield import MultiSelectField
 from django.utils import timezone
 from django.core.validators import MinValueValidator
 
+# Arenduse käigus mahajäetud osa andmete salvestamiseks ja hiljem vaatamiseks võrdluses teiste tekstidega.
 MY_CHOICES = (('Ilukirjandus', 'Ilukirjandus'),
               ('Esseistika', 'Esseistika'),
               ('Epistolaarne kirjandus', 'Epistolaarne kirjandus'),
@@ -36,7 +37,3 @@ class Content(models.Model):
 
 	def __str__(self):
 		return self.user + "_" + self.created
-
-
-	# Ilukirjandus, Esseistika, Epistolaarne kirjandus, Memuaristika, Kroonikakirjandus, Teaduskirjandus, Populaarteaduslik, Faktikirjandus
-	# Teabekirjandus, Õppekirjandus, Teatmekirjandus, Tarbekirjandus, Kommertsteksti, Poliitiline kirjandus, Vaimulik kirjandus, Epitaafid, Muusika literatuur

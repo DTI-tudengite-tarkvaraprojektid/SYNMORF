@@ -17,9 +17,9 @@
 
 	<div>
 	<h1>Sisestage algtekst</h1>
-	<form method="POST" action="" class="post-form">{% csrf_token %} 
-		{{ form.as_p }} 
-		
+	<form method="POST" action="" class="post-form">{% csrf_token %}
+		{{ form.as_p }}
+
 		<button type="submit" class="save btn btn-default">Saada</button>
 	</form>
 	<button class="btn btn-success btn-md" > ? </button>
@@ -40,23 +40,24 @@
 						<th>Tähejäriend</th>
 						<th>Kogus</th>
 					</tr>
-					</thead>
+
+                    </thead>
 					<tbody>
 					<!-- Forloop counter loeb üle mitu korda for loop on oma tsükklit teinud -->
 					<!-- Lisatud selle jaoks, et näha kui mitmendal kohal sageduse poolest see esineb.-->
 					{% for letter in letters %}
 
-						
+
 						<tr class='clickable-row' id='{{letter.0}}'>
 							<td>{{ forloop.counter }}</td>
 							<td>{{ letter.0 }}</td>
 							<td>{{ letter.1 }}</td>
 						</tr>
 
-						
+
 					{% endfor %}
 					</tbody>
-					
+
 				</table>
 				</div>
         </div>
@@ -64,7 +65,7 @@
 
 	<!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
 	{% if lemmas %}
-		
+
 
 		<div class="table-container">
 
@@ -77,15 +78,15 @@
 					<tr>
 						<th>#</th>
 						<th>Lemma</th>
-						<th>Kogus</th>						
+						<th>Kogus</th>
 					</tr>
 				</thead>
 				<tbody>
-				
+
 					<!-- Võtab sisse lemmade listi ja kirjutab välja iga for tsükkliga tabeli rea. -->
 					<!-- Kuna lemma on list, siis selle elementide indekseerimine käib punkti abil. vt rida 30/31. -->
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
-					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
+					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] -->
 					{% for lemma in lemmas %}
 						<tr  class='dickable-row'  id='{{lemma.0}}'>
 							<td>{{ forloop.counter }}</td>
@@ -95,9 +96,9 @@
 					{% endfor %}
 				</tbody>
 			</table>
-		</div>	
 		</div>
-		
+		</div>
+
 		<div class="table-container-right">
 		<h1>Vormid</h1>
 
@@ -106,21 +107,21 @@
 
 				<thead>
 					<tr>
-						
+
 						<th>Vorm</th>
 						<th>Lemma</th>
-						<th>Kogus</th>						
+						<th>Kogus</th>
 					</tr>
 				</thead>
 				<tbody>
-				
+
 					<!-- Võtab sisse lemmade listi ja kirjutab välja iga for tsükkliga tabeli rea. -->
 					<!-- Kuna lemma on list, siis selle elementide indekseerimine käib punkti abil. vt rida 30/31. -->
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
-					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
+					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] -->
 					{% for word_text in word_texts %}
 						<tr  class='cable-row' >
-							
+                            <td>{{ forloop.counter}}</td>
 							<td>{{ word_text.1 }}</td>
 							<td>{{ word_text.2 }}</td>
 							<td>{{ word_text.3 }}</td>
@@ -128,7 +129,7 @@
 					{% endfor %}
 				</tbody>
 			</table>
-		</div>	
+		</div>
 		</div>
 	<div>
 	<p class="clear"></p>
@@ -136,7 +137,7 @@
 	{% if matrix %}
 	<h1 style="margin-top: 30px;">Külgnevusmaatriks</h1>
         <div class="matrix-container">
-            
+
             <table class="table table-striped" id="myTable3">
                 <thead>
                 <tr>
