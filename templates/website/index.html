@@ -7,8 +7,6 @@
 <!-- Loogsulud protsentidega tähistab et tegemist on Pythoni keele võtmesõnaga. -->
 <!-- Topeltloogsulud. tähistab Pythoni muutujat, mida me t012loputoo/website/views.py muudame selles failis arusaadavaks.
 <!-- Staticfails laeb sisse eraldi kausta mille sees on kõik pildid, javascript failid jne.
-
-
 <!-- Kõik mis on block content ja endblock tagi vahel, lisatakse base.html sisse kus on samuti block ja endblock tagid. -->
 <!-- Sarnane veebirakenduste kursuses html laiendamisega extend'i kasutades. -->
 <!-- form.as_p trükib formi input elemendid paragraafidena välja -->
@@ -40,18 +38,17 @@
 						<th>Tähejäriend</th>
 						<th>Kogus</th>
 					</tr>
-
-                    </thead>
+					</thead>
 					<tbody>
 					<!-- Forloop counter loeb üle mitu korda for loop on oma tsükklit teinud -->
 					<!-- Lisatud selle jaoks, et näha kui mitmendal kohal sageduse poolest see esineb.-->
 					{% for letter in letters %}
 
 
-						<tr class='clickable-row' id='{{letter.0}}'>
-							<td>{{ forloop.counter }}</td>
-							<td>{{ letter.0 }}</td>
-							<td>{{ letter.1 }}</td>
+						<tr onclick="clicked(this)" class='clickable-row' id='{{letter.0}}'>
+							<td style='cursor:pointer'>{{ forloop.counter }}</td>
+							<td style='cursor:pointer'>{{ letter.0 }}</td>
+							<td style='cursor:pointer'>{{ letter.1 }}</td>
 						</tr>
 
 
@@ -88,10 +85,10 @@
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
 					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] -->
 					{% for lemma in lemmas %}
-						<tr  class='dickable-row'  id='{{lemma.0}}'>
-							<td>{{ forloop.counter }}</td>
-							<td>{{ lemma.0 }}</td>
-							<td>{{ lemma.1 }}</td>
+						<tr onclick="dicked(this)" class='dickable-row'  id='{{lemma.0}}'>
+							<td style='cursor:pointer'>{{ forloop.counter }}</td>
+							<td style='cursor:pointer'>{{ lemma.0 }}</td>
+							<td style='cursor:pointer'>{{ lemma.1 }}</td>
 						</tr>
 					{% endfor %}
 				</tbody>
@@ -121,7 +118,7 @@
 					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] -->
 					{% for word_text in word_texts %}
 						<tr  class='cable-row' >
-                            <td>{{ forloop.counter}}</td>
+
 							<td>{{ word_text.1 }}</td>
 							<td>{{ word_text.2 }}</td>
 							<td>{{ word_text.3 }}</td>
@@ -191,7 +188,6 @@
                 {
                     value: 20,
                     color: "#878BB6"
-
                 },
                 {
                     value: 40,
