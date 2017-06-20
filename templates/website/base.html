@@ -51,28 +51,28 @@
 
     // #cancer
     var lemmaTabel = $('#myTable').DataTable({
-        dom: 'Bfrtip',
+        dom: 'lBfrtip',
         buttons: ['copy', 'csv', 'excel', 'pdf'],
         language: language,
         lengthMenu: [[50,100,1000,-1],[50,100,'1000','kõik']]
     });
 	
 	var itallTable = $('#myTable4').DataTable({
-        dom: 'Bfrtip',
+        dom: 'lBfrtip',
         buttons: ['copy', 'csv', 'excel', 'pdf'],
         language: language,
         aLengthMenu: [[50,100,1000,-1],[50,100,1000,'kõik']]
     });
 
     var sequenceTable = $('#myTable2').DataTable({
-        dom: 'Bfrtip',
+        dom: 'lBfrtip',
         buttons: ['copy', 'csv', 'excel', 'pdf'],
         language: language,
         aLengthMenu: [[50,100,1000,-1],[50,100,1000,'kõik']]
     });
 
     var matrixTable = $('#myTable3').DataTable({
-        dom: 'Bfrtip',
+        dom: 'lBfrtip',
         buttons: ['copy', 'csv', 'excel', 'pdf'],
         language: language,
         aLengthMenu: [[50,100,1000,-1],[50,100,1000,'kõik']]
@@ -80,31 +80,10 @@
 
 
     jQuery(document).ready(function ($) {
-	
-
-	        $(".clickable-row2").each(function () {
-           /* $(this).click(function () {
-                var value = $(this).attr('id');
-                console.log(value);
-                itallTable.search(value).draw();
-                $(this).css('background-color', 'pink');
-            });*/
-        });
-
 		    $(".clickable-row3").each(function () {
             $(this).click(function () {
-                
-                $(this).css('background-color', 'pink');
+            $(this).css('background-color', 'pink');
             });
-        });
-
-        $(".clickable-row").each(function () {
-           /* $(this).click(function () {
-                var value = $(this).attr('id');
-                console.log(value);
-                lemmaTabel.search(value).draw();
-                $(this).css('background-color', 'pink');
-            });*/
         });
     });
 
@@ -126,7 +105,7 @@
 					fileDisplayArea.innerText = reader.result;
 				}
 
-				reader.readAsText(file, "windows-1250")	
+				reader.readAsText(file, "windows-1257")	
 			} else {
 				fileDisplayArea.innerText = "Faili tüüp ei ole toetatud!";
 			}
