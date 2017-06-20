@@ -19,7 +19,13 @@
 	<h1>Sisestage algtekst</h1>
 	<form method="POST" action="" class="post-form">{% csrf_token %} 
 		{{ form.as_p }} 
-		
+	<div id="page-wrapper">
+
+		<h3>Teksti lisamine failist</h3>
+		<div>
+			<input type="file" id="fileInput">
+		</div>
+	</div>
 		<button type="submit" class="save btn btn-default">Saada</button>
 	</form>
 	<button class="btn btn-success btn-md" > ? </button>
