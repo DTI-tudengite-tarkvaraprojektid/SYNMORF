@@ -13,23 +13,23 @@ def make_dataframe(text):
 	filtered_dataframe = dataframe[
 		(dataframe.postag_descriptions != "lausemärk") & (dataframe.descriptions != "") & (dataframe.lemmas != "") & (
 			dataframe.word_texts != "") & (dataframe.postag_descriptions != "") & (
-			dataframe.postag_descriptions != "pärisnimi") & dataframe.word_texts.apply(lambda sona: sona.isalpha())]
+			dataframe.postag_descriptions != "pärisnimi") & dataframe.lemmas.apply(lambda sona: sona.islower()) & dataframe.word_texts.apply(lambda sona: sona.isalpha()) & dataframe.lemmas.apply(lambda sona: sona.isalpha())]
 	return filtered_dataframe
 
+
 def count_basewords(dataframe):
-
-
 	dataframe = dataframe["word_texts"]
 	list_of_attributes = list(dataframe)
 	c = Counter(list_of_attributes)
 	return c.most_common()	
 	
+	
 def get_it_all(filtered_dataframe):
-
 	t5 = pd.merge(pd.DataFrame.from_records(count_basewords(filtered_dataframe)), filtered_dataframe, left_on=0, right_on="word_texts")[["word_texts", "lemmas", 1]].drop_duplicates()
 	t5.columns = ["word_texts", "lemmas", "countDracula"]
 	return t5.to_records()
 
+	
 # Loendab ära lemmade arve, tagastab kujul [("lemma", arv), ("lemma2", arv2), (... , ...)]
 def count_attribute(dataframe, attribute):
 	dataframe = dataframe[attribute]

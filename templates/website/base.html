@@ -54,44 +54,44 @@
         dom: 'Bfrtip',
         buttons: ['copy', 'csv', 'excel', 'pdf'],
         language: language,
-        aLengthMenu: [ 25, 50, 100, 200, "All"]
-		
+        lengthMenu: [[50,100,1000,-1],[50,100,'1000','kõik']]
     });
 	
 	var itallTable = $('#myTable4').DataTable({
         dom: 'Bfrtip',
         buttons: ['copy', 'csv', 'excel', 'pdf'],
         language: language,
-        aLengthMenu: [ 25, 50, 100, 200, "All"]
+        aLengthMenu: [[50,100,1000,-1],[50,100,1000,'kõik']]
     });
 
     var sequenceTable = $('#myTable2').DataTable({
         dom: 'Bfrtip',
         buttons: ['copy', 'csv', 'excel', 'pdf'],
         language: language,
-        aLengthMenu: [ 25, 50, 100, 200, "All"]
+        aLengthMenu: [[50,100,1000,-1],[50,100,1000,'kõik']]
     });
 
     var matrixTable = $('#myTable3').DataTable({
         dom: 'Bfrtip',
         buttons: ['copy', 'csv', 'excel', 'pdf'],
         language: language,
-        aLengthMenu: [25, 50, 100, 200, "All"]
+        aLengthMenu: [[50,100,1000,-1],[50,100,1000,'kõik']]
     });
 
 
     jQuery(document).ready(function ($) {
 	
-	        $(".dickable-row").each(function () {
-            $(this).click(function () {
+
+	        $(".clickable-row2").each(function () {
+           /* $(this).click(function () {
                 var value = $(this).attr('id');
                 console.log(value);
                 itallTable.search(value).draw();
                 $(this).css('background-color', 'pink');
-            });
+            });*/
         });
 
-		    $(".cable-row").each(function () {
+		    $(".clickable-row3").each(function () {
             $(this).click(function () {
                 
                 $(this).css('background-color', 'pink');
@@ -99,14 +99,15 @@
         });
 
         $(".clickable-row").each(function () {
-            $(this).click(function () {
+           /* $(this).click(function () {
                 var value = $(this).attr('id');
                 console.log(value);
                 lemmaTabel.search(value).draw();
                 $(this).css('background-color', 'pink');
-            });
+            });*/
         });
     });
+
 	$(document).ready(function(){
     $('.btn-success').tooltip({title: "Kui valisite N grami kõrgema kui 2 siis maatriksi kuvamisel võib browser kokku joosta. Vaikimisi ei kuvata maatriksi", animation: true});
 });
@@ -131,4 +132,30 @@
 			}
 		});
 	}
+
+
+	function clicked(e) {
+		var value = $(e).attr('id');
+		console.log(value);
+		lemmaTabel.search(value).draw();
+		$(e).css('background-color', 'pink');
+	}
+	function clicked2(e) {
+		var value = $(e).attr('id');
+		console.log(value);
+		itallTable.search(value).draw();
+		$(e).css('background-color', 'pink');
+	}
+	function clicked3(e) {
+        $(e).css('background-color', 'pink');
+	}
+	
+	$(document).ready(function(){
+		$('.btn-success').tooltip({title: "Kui valisite N grami kõrgema kui 2 siis maatriksi kuvamisel võib browser kokku joosta. Vaikimisi ei kuvata maatriksi", animation: true});
+		$('.clickable-row').tooltip({title: "otsi lemmat", animation: true});
+		$('.clickable-row2').tooltip({title: "otsi vormi", animation: true});
+		 
+	}); 
+		
+
 </script>

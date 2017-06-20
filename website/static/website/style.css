@@ -63,18 +63,20 @@ h1, h2, h3, h4 {
     table-layout: fixed !important;
 }
 
-.cable-row:hover {
+.clickable-row3:hover {
     color: #0000FF;
     background-color: #C0C0C0 !important;
 }
 
-.dickable-row:hover {
+.clickable-row2:hover {
     color: #0000FF;
+	cursor: pointer !important;
     background-color: #C0C0C0 !important;
 }
 
 .clickable-row:hover {
     color: #0000FF;
+	cursor: pointer !important;
     background-color: #C0C0C0 !important;
 }
 .dataTables_filter {

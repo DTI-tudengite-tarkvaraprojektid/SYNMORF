@@ -18,6 +18,7 @@
 	<div>
 	<h1>Sisestage algtekst</h1>
 	<form method="POST" action="" class="post-form">{% csrf_token %} 
+	
 		{{ form.as_p }} 
 	<div id="page-wrapper">
 
@@ -36,14 +37,14 @@
 <!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
 	{% if lemmas %}
 	    <div class="table-container">
-			<h1>Tähejäriendid</h1>
+			<h1>Tähejärjendid</h1>
 			<div class="scroll">
 
 				<table class="table table-striped" id="myTable2">
 					<thead>
 					<tr>
 						<th>#</th>
-						<th>Tähejäriend</th>
+						<th>Tähejärjend</th>
 						<th>Kogus</th>
 					</tr>
 					</thead>
@@ -93,7 +94,7 @@
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
 					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
 					{% for lemma in lemmas %}
-						<tr onclick="dicked(this)" class='dickable-row'  id='{{lemma.0}}'>
+						<tr onclick="clicked2(this)" class='clickable-row2'  id='{{lemma.0}}'>
 							<td style='cursor:pointer'>{{ forloop.counter }}</td>
 							<td style='cursor:pointer'>{{ lemma.0 }}</td>
 							<td style='cursor:pointer'>{{ lemma.1 }}</td>
@@ -125,7 +126,7 @@
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
 					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
 					{% for word_text in word_texts %}
-						<tr  class='cable-row' >
+						<tr onclick="clicked3(this)" class='clickable-row3'  >
 							
 							<td>{{ word_text.1 }}</td>
 							<td>{{ word_text.2 }}</td>
@@ -155,7 +156,7 @@
                 <tbody>
 
                 {% for sequence in matrix %}
-                    <tr class='clickable-row'>
+                    <tr onclick="clicked3(this)" class='clickable-row3'>
                         <td>{{ header|get_at_index:forloop.counter0}}</td>
                         {% for data in sequence %}
                             <td>{{ data }}</td>
