@@ -7,8 +7,6 @@
 <!-- Loogsulud protsentidega tähistab et tegemist on Pythoni keele võtmesõnaga. -->
 <!-- Topeltloogsulud. tähistab Pythoni muutujat, mida me t012loputoo/website/views.py muudame selles failis arusaadavaks.
 <!-- Staticfails laeb sisse eraldi kausta mille sees on kõik pildid, javascript failid jne.
-
-
 <!-- Kõik mis on block content ja endblock tagi vahel, lisatakse base.html sisse kus on samuti block ja endblock tagid. -->
 <!-- Sarnane veebirakenduste kursuses html laiendamisega extend'i kasutades. -->
 <!-- form.as_p trükib formi input elemendid paragraafidena välja -->
@@ -17,6 +15,7 @@
 
 	<div>
 	<h1>Sisestage algtekst</h1>
+
 	<form method="POST" action="" class="post-form">{% csrf_token %} 
 	
 		{{ form.as_p }} 
@@ -53,17 +52,17 @@
 					<!-- Lisatud selle jaoks, et näha kui mitmendal kohal sageduse poolest see esineb.-->
 					{% for letter in letters %}
 
-						
+
 						<tr onclick="clicked(this)" class='clickable-row' id='{{letter.0}}'>
 							<td style='cursor:pointer'>{{ forloop.counter }}</td>
 							<td style='cursor:pointer'>{{ letter.0 }}</td>
 							<td style='cursor:pointer'>{{ letter.1 }}</td>
 						</tr>
 
-						
+
 					{% endfor %}
 					</tbody>
-					
+
 				</table>
 				</div>
         </div>
@@ -71,7 +70,7 @@
 
 	<!-- Kontrollib, kas form on saadetud ja et backendis oleksid andmed olemas.  -->
 	{% if lemmas %}
-		
+
 
 		<div class="table-container">
 
@@ -84,15 +83,15 @@
 					<tr>
 						<th>#</th>
 						<th>Lemma</th>
-						<th>Kogus</th>						
+						<th>Kogus</th>
 					</tr>
 				</thead>
 				<tbody>
-				
+
 					<!-- Võtab sisse lemmade listi ja kirjutab välja iga for tsükkliga tabeli rea. -->
 					<!-- Kuna lemma on list, siis selle elementide indekseerimine käib punkti abil. vt rida 30/31. -->
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
-					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
+					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] -->
 					{% for lemma in lemmas %}
 						<tr onclick="clicked2(this)" class='clickable-row2'  id='{{lemma.0}}'>
 							<td style='cursor:pointer'>{{ forloop.counter }}</td>
@@ -102,9 +101,9 @@
 					{% endfor %}
 				</tbody>
 			</table>
-		</div>	
 		</div>
-		
+		</div>
+
 		<div class="table-container-right">
 		<h1>Vormid</h1>
 
@@ -113,21 +112,22 @@
 
 				<thead>
 					<tr>
-						
+                        <th>#</th>
 						<th>Vorm</th>
 						<th>Lemma</th>
-						<th>Kogus</th>						
+						<th>Kogus</th>
 					</tr>
 				</thead>
 				<tbody>
-				
+
 					<!-- Võtab sisse lemmade listi ja kirjutab välja iga for tsükkliga tabeli rea. -->
 					<!-- Kuna lemma on list, siis selle elementide indekseerimine käib punkti abil. vt rida 30/31. -->
 					<!-- Muutuja lemmas on kujul [['lemma', esinemissagedus], ['lemma2', esinemissagedus2], ['lemma3', esinemissagedus3]] -->
-					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] --> 
+					<!-- Muutuja lemma on kujul ['lemma', esinemissagedus] -->
 					{% for word_text in word_texts %}
+
 						<tr onclick="clicked3(this)" class='clickable-row3'  >
-							
+							<td>{{ forloop.counter }}</td>
 							<td>{{ word_text.1 }}</td>
 							<td>{{ word_text.2 }}</td>
 							<td>{{ word_text.3 }}</td>
@@ -135,7 +135,7 @@
 					{% endfor %}
 				</tbody>
 			</table>
-		</div>	
+		</div>
 		</div>
 	<div>
 	<p class="clear"></p>
@@ -143,7 +143,7 @@
 	{% if matrix %}
 	<h1 style="margin-top: 30px;">Külgnevusmaatriks</h1>
         <div class="matrix-container">
-            
+
             <table class="table table-striped" id="myTable3">
                 <thead>
                 <tr>
@@ -168,80 +168,7 @@
             </table>
         </div>
        {% endif %}
-        <!-- line chart canvas element -->
-        <canvas id="buyers" width="600" height="400" style=" display: block; margin: auto; margin-top: 50px"></canvas><br>
-		<!-- pie chart canvas element -->
-        <canvas id="countries" width="600" height="400" style="display: block;margin: auto; margin-top: 50px"></canvas><br>
-        <!-- bar chart canvas element -->
-        <canvas id="income" width="600" height="400" style="display: block;margin: auto; margin-top: 50px"></canvas><br>
-        <script>
-            // line chart data
-            var buyerData = {
-                labels: ["January", "February", "March", "April", "May", "June"],
-                datasets: [
-                    {
-                        fillColor: "rgba(172,194,132,0.4)",
-                        strokeColor: "#ACC26D",
-                        pointColor: "#fff",
-                        pointStrokeColor: "#9DB86D",
-                        data: [203, 156, 99, 251, 305, 247]
-                    }
-                ]
-            };
-            // get line chart canvas
-            var buyers = document.getElementById('buyers').getContext('2d');
-            // draw line chart
-            new Chart(buyers).Line(buyerData);
-            // pie chart data
-            var pieData = [
-                {
-                    value: 20,
-                    color: "#878BB6"
 
-                },
-                {
-                    value: 40,
-                    color: "#4ACAB4"
-                },
-                {
-                    value: 10,
-                    color: "#FF8153"
-                },
-                {
-                    value: 30,
-                    color: "#FFEA88"
-                }
-            ];
-            // pie chart options
-            var pieOptions = {
-                segmentShowStroke: false,
-                animateScale: true
-            };
-            // get pie chart canvas
-            var countries = document.getElementById("countries").getContext("2d");
-            // draw pie chart
-            new Chart(countries).Pie(pieData, pieOptions);
-            // bar chart data
-            var barData = {
-                labels: ["January", "February", "March", "April", "May", "June"],
-                datasets: [
-                    {
-                        fillColor: "#48A497",
-                        strokeColor: "#48A4D1",
-                        data: [456, 479, 324, 569, 702, 600]
-                    },
-                    {
-                        fillColor: "rgba(73,188,170,0.4)",
-                        strokeColor: "rgba(72,174,209,0.4)",
-                        data: [364, 504, 605, 400, 345, 320]
-                    }
-                ]
-            };
-            // get bar chart canvas
-            var income = document.getElementById("income").getContext("2d");
-            // draw bar chart
-            new Chart(income).Bar(barData);
-        </script>
 	{% endif %}
     {% endif %}
 
