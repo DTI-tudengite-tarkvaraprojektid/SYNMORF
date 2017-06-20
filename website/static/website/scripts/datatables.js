@@ -20,17 +20,12 @@ var dataTableOptions = {
     dom: 'lBfrtip',
     buttons: ['print', 'csv', 'excel', 'pdf'],
     language: language,
-    aLengthMenu: [25, 50, 100, 200, "All"]
+    aLengthMenu: [[50,100,1000,-1],[50,100,1000,'Kõik']]
 };
 
 
 var lemmaTabel = $('#myTable').DataTable(dataTableOptions);
-
-
 var itallTable = $('#myTable4').DataTable(dataTableOptions);
-
-
 var sequenceTable = $('#myTable2').DataTable(dataTableOptions);
-
-
 var matrixTable = $('#myTable3').DataTable(dataTableOptions);
+

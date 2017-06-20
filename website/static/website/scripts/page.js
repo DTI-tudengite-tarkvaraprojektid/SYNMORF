@@ -1,4 +1,4 @@
-    jQuery(document).ready(function ($) {
+    $(document).ready(function ($) {
         $(".clickable-row3").each(function () {
             $(this).click(function () {
 

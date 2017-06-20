@@ -21,7 +21,7 @@ def index(request):
 		counted_lemmas = count_attribute(df, "lemmas")                      # [['lemma', kogus], ['lemma', kogus]]
 		letter_sequence = get_letter_sequence(df, ngrams)                   # [['tähejäriend', kogus], ['tähejäriend', kogus]]
 		counted_basewords_lemmas = get_it_all(df)                           # [['põhivorm', 'lemma', põhivormikogus], ['põhivorm', 'lemma', põhivormikogus]]
-		adjacency_matrix, headers = get_adjandency_matrix(text, ngrams)     # Annab välja maatriksi ja maatriksi tulpade pealkirjad.
+
 
 		# Genereerib uuesti formi, mida HTML lehele saata.
 		form = InputForm()
@@ -29,5 +29,6 @@ def index(request):
 		if maatriks == "Ilma maatriksita":
 			return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters': letter_sequence,'word_texts': counted_basewords_lemmas, 'header': headers})
 		else:
+			adjacency_matrix, headers = get_adjandency_matrix(text, ngrams)  # Annab välja maatriksi ja maatriksi tulpade pealkirjad.
 			return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters': letter_sequence,'word_texts': counted_basewords_lemmas, 'matrix': adjacency_matrix, 'header': headers})
 
