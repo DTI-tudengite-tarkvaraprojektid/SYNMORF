@@ -22,7 +22,7 @@ MY_CHOICES = (('Ilukirjandus', 'Ilukirjandus'),
               ('Epitaafid', 'Epitaafid'),
               ('Muusika literatuur', 'Muusika literatuur'))
 
-MY_CHOICES2 = (('Vaikimisi', 'Vaikimisi'),
+MY_CHOICES2 = (('Ilma maatriksita', 'Ilma maatriksita'),
                ('Maatriksiga', 'Maatriksiga'))
 
 
@@ -32,7 +32,7 @@ class Content(models.Model):
 	n_gram = models.PositiveIntegerField(validators=[MinValueValidator(1)], default=1)
 	title = models.CharField(max_length=50, default="")
 	types = models.CharField(max_length=100, choices=MY_CHOICES, default='Ilukirjandus')
-	maatriks = models.CharField(max_length=100, choices=MY_CHOICES2, default='Vaikimisi')
+	maatriks = models.CharField(max_length=100, choices=MY_CHOICES2, default='Ilma maatriksita')
 	created = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):

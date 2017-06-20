@@ -25,7 +25,7 @@ SECRET_KEY = 'xc!+3cx+&*c633xb*bdk@gepo)z@#!#d!q6egff1g+sdo+un0='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '193.40.238.6']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '193.40.238.6', 'praktika1.cs.tlu.ee']
 
 
 # Application definition
@@ -104,9 +104,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'et'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Tallinn'
 
 USE_I18N = True
 
