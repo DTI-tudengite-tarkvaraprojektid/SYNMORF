@@ -42,7 +42,7 @@ def index(request):
 
 		form = InputForm()
 
-		if maatriks == "Vaikimisi":
+		if maatriks == "Ilma maatriksita":
 			return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters': letter_sequence,'word_texts': counted_basewords_lemmas, 'header': headers})
 		else:
 			return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters': letter_sequence,'word_texts': counted_basewords_lemmas, 'matrix': adjacency_matrix, 'header': headers})
