@@ -1,2 +1,3 @@
-*.pyc
 synmorf/settings.py
+synmorf/pycache/*.pyc
+website/pycache/*.pyc

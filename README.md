@@ -1,6 +1,8 @@
 # SYNMORF
 Loodud Tallinna Ülikooli digitehnoloogiate instituudi suvepraktika raames TLU eesti vahekeele korpuse palvel, et lihtsustada lingvistilise analüüsi hõlbsustamiseks, pakkudes graafilist tagasisidet tekstile tehtud morfoloogilisest analüüsist. Projekti raames kasutatakse eesti keelele konfigureeritud ning eestlaste poole väljaaretatud lingvistika teeki EstNLTK.
 
+Kujundus põhineb Django Girls Tutoriali kujunduse põhjal.
+
 ## Arenduses osalenud isikud:
 * Marko Kollo
 * Mart Ambur Jr
