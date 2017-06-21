@@ -20,7 +20,9 @@ var dataTableOptions = {
     dom: 'lBfrtip',
     buttons: ['print', 'csv', 'excel', 'pdf'],
     language: language,
-    aLengthMenu: [[50,100,1000,-1],[50,100,1000,'Kõik']]
+    aLengthMenu: [[50, 100, 1000, -1], [50, 100, 1000, 'Kõik']],
+    "order": []
+
 };
 
 
