@@ -2,6 +2,7 @@ from estnltk import Text
 from collections import Counter
 import numpy as np
 import pandas as pd
+import re
 
 
 # Eemaldab sisestatud sõnadest arvud, lausemärgid ja nimed.
@@ -9,11 +10,10 @@ import pandas as pd
 def make_dataframe(text):
 	dataframe = Text(text).get(["word_texts", "lemmas", "postag_descriptions", "descriptions"]).as_dataframe
 	filtered_dataframe = dataframe[
-		(dataframe.postag_descriptions != "lausemärk") & (dataframe.descriptions != "") & (dataframe.lemmas != "") & (
-			dataframe.word_texts != "") & (dataframe.postag_descriptions != "") & (
-			dataframe.postag_descriptions != "pärisnimi") & dataframe.lemmas.apply(
-			lambda sona: sona.islower()) & dataframe.word_texts.apply(
-			lambda sona: sona.isalpha()) & dataframe.lemmas.apply(lambda sona: sona.isalpha())]
+		(dataframe.postag_descriptions != "lausemärk") &
+		(dataframe.postag_descriptions != "pärisnimi") &
+		dataframe.lemmas.apply(lambda sona: bool(re.match('^[a-z]+$', sona)))
+	]
 	return filtered_dataframe
 
 

@@ -27,7 +27,7 @@ def index(request):
 		form = InputForm()
 
 		if maatriks == "Ilma maatriksita":
-			return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters': letter_sequence,'word_texts': counted_basewords_lemmas, 'header': headers})
+			return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters': letter_sequence,'word_texts': counted_basewords_lemmas})
 		else:
 			adjacency_matrix, headers = get_adjandency_matrix(text, ngrams)  # Annab välja maatriksi ja maatriksi tulpade pealkirjad.
 			return render(request, "website/index.html", {'form': form, 'lemmas': counted_lemmas, 'letters': letter_sequence,'word_texts': counted_basewords_lemmas, 'matrix': adjacency_matrix, 'header': headers})

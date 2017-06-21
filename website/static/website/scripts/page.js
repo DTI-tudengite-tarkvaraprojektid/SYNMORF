@@ -1,7 +1,6 @@
     $(document).ready(function ($) {
         $(".clickable-row3").each(function () {
             $(this).click(function () {
-
                 $(this).css('background-color', 'pink');
             });
         });
@@ -39,12 +38,14 @@
         $(e).css('background-color', 'pink');
     }
 
+
     function clicked2(e) {
         var value = $(e).attr('id');
         console.log(value);
         itallTable.search(value).draw();
         $(e).css('background-color', 'pink');
     }
+
 
     function clicked3(e) {
         $(e).css('background-color', 'pink');
@@ -56,7 +57,7 @@
             animation: true
         });
 
-        $('.clickable-row').tooltip({title: "Otsi lemmat", animation: true});
-        $('.clickable-row2').tooltip({title: "Otsi vormi", animation: true});
+        $('.clickable-row').tooltip({title: "Otsi lemmat.", animation: true});
+        $('.clickable-row2').tooltip({title: "Otsi vormi.", animation: true});
 
     });

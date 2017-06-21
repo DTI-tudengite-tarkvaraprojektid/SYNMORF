@@ -22,7 +22,7 @@ var dataTableOptions = {
     language: language,
     aLengthMenu: [[50,100,1000,-1],[50,100,1000,'Kõik']]
 };
- 
+
 
 var lemmaTabel = $('#myTable').DataTable(dataTableOptions);
 var itallTable = $('#myTable4').DataTable(dataTableOptions);
