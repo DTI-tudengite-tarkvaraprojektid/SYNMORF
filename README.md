@@ -70,6 +70,4 @@ peab see hoidma sama litsensi ja autoriõigusi.
 
 
 ## Pildid
-![Teksti lisamine töötluseks](http://www.tlu.ee/~mkollo/SYNMORF/mpWKnDgRRKu65lZxXmX0eQ.png)
-![Tabeli kujul informatsioon](http://www.tlu.ee/~mkollo/SYNMORF/MIlbH9F2Su6MkNGrbtxQeg.png)
-![Tähejäriendite külgnevusmaatriks](http://www.tlu.ee/~mkollo/SYNMORF/r02EcTT8TSGXUwQxGANTFQ.png)
+![Programmi kasutus](http://www.tlu.ee/~mkollo/SYNMORF/synmorf.gif)
